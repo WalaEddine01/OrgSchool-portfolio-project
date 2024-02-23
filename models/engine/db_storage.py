@@ -15,8 +15,8 @@ import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
-classes = {"BaseModel": BaseModel, "Student": Student,
-           "School": School, "Teacher": Teacher, "SClass": SClass, "Admin": Admin}
+classes = {"Student": Student,"School": School, "Teacher": Teacher,
+           "SClass": SClass, "Admin": Admin}
 
 
 class DBStorage:
