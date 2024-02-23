@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/styles/4-common.css?{{cache_id}}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/styles/3-header.css?{{cache_id}}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/styles/3-footer.css?{{cache_id}}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/styles/6-filters.css?{{cache_id}}"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="../static/styles/8-schools.css?{{cache_id}}"
+    />
+    <link rel="icon" href="../static/images/icon.png" />
+    <title>HBnB</title>
+  </head>
+  <body>
+    <header>
+      <div class="logo"></div>
+    </header>
+    <div class="container">
+      <section class="filters">
+        <div class="locations">
+          <h3>Classs</h3>
+          <h4>&nbsp;</h4>
+          <div class="popover">
+            <ul>
+              {% for class in classs %}
+              <li>
+                <h2>{{ class[0].name }}:</h2>
+                <ul>
+                  {% for student in class[1] %}
+                  <li>{{ student.name }}</li>
+                  {% endfor %}
+                </ul>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <div class="amenities">
+          <h3>Amenities</h3>
+          <h4>&nbsp;</h4>
+          <div class="popover">
+            <ul>
+              {% for amenity in amenities %}
+              <li>{{ amenity.name }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <button type="button">Search</button>
+      </section>
+      <div class="schoolsh1"><h1>Places</h1></div>
+      <section class="schools">
+        <!-- <h1>Places</h1> -->
+        {% for school in schools %}
+        <article>
+          <div class="title_box">
+            <h2>{{ school.name }}</h2>
+            <div class="price_by_night">${{ school.price_by_night }}</div>
+          </div>
+          <div class="information">
+            <div class="max_guest">
+              {{ school.max_guest }} Guest{% if school.max_guest != 1 %}s{%
+              endif %}
+            </div>
+            <div class="number_rooms">
+              {{ school.number_rooms }} Bedroom{% if school.number_rooms != 1
+              %}s{% endif %}
+            </div>
+            <div class="number_bathrooms">
+              {{ school.number_bathrooms }} Bathroom{% if
+              school.number_bathrooms != 1 %}s{% endif %}
+            </div>
+          </div>
+          <div class="admin">
+            <b>Owner:</b> {{ school.admin.first_name }} {{
+            school.admin.last_name }}
+          </div>
+          <div class="description">{{ school.description | safe }}</div>
+        </article>
+        {% endfor %}
+      </section>
+    </div>
+    <footer>
+      <p>Holberton School</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+    Deletes a admin 
+    ---
+    tags:
+      - Admins
+    parameters:
+      - name: admin_id
+        in: path
+        type: string
+        required: false
+        description: The unique id of the admin
+    responses:
+      404:
+        description: admin not found!
+      200:
+        description: request executed successfully

@@ -1,0 +1,32 @@
+get a specific student  based on the class_id
+---
+tags:
+  - Cities
+parameters:
+  - name: student_id
+    in: path
+    type: string
+    required: true
+    description: The uniqe id of the student
+responses:
+  200:
+    description: Successful request
+    schema:
+      properties:
+        __class__:
+          type: string
+        created_at:
+          type: string
+          description: time of creation of the instance
+        updated_at:
+          type: string
+          description: time of last update of the instance
+        id:
+          type: string
+          description: The uuid of the instance
+        class_id:
+          type: string
+          description: uuid of the student's class
+        name:
+          type: string
+          description: student name

@@ -1,0 +1,15 @@
+    Deletes a teacher based on the id provided
+    ---
+    tags:
+      - Teachers
+    parameters:
+      - name: teacher_id
+        in: path
+        type: string
+        required: true
+        description: The uuid of the teacher to delete
+    responses:
+      404:
+        description: Teacher not found!
+      200:
+        description: Deletion request sucessful

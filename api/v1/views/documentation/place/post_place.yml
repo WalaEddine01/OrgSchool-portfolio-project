@@ -1,0 +1,29 @@
+    Posts a new school.
+    ---
+    tags:
+      - Places
+    parameters:
+      - name: student_id
+        in: path
+        type: string
+        required: true
+        description: The id of the Student to link to
+      - name: admin_id and name
+        in: body
+        required: true
+        requires:
+          - admin_id
+          - name
+        properties:
+          admin_id:
+            type: string
+          name:
+            type: string
+
+    responses:
+      404:
+        description: resource not found!
+      400:
+        description: missing admin_id, name or invalid JSON
+      201:
+        description: Successful request

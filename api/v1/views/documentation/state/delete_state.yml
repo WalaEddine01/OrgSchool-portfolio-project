@@ -1,0 +1,15 @@
+    Deletes a class based on the id provided
+    ---
+    tags:
+      - Classs
+    parameters:
+      - name: class_id
+        in: path
+        type: string
+        required: true
+        description: The uuid of the class to delete
+    responses:
+      404:
+        description: Class not found!
+      200:
+        description: Deletion request sucessful

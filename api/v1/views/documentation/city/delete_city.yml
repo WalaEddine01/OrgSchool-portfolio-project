@@ -1,0 +1,15 @@
+    deletes a student based on id
+    ---
+    tags:
+      - Cities
+    parameters:
+      - name: student_id
+        in: path
+        type: string
+        required: true
+        description: id of the student
+    responses:
+      404:
+        description: Student  not found!
+      200:
+        description: Request completed successfully

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>HBNB</title>
+  </head>
+  <body>
+    <h1>{{ h_1 }}</h1>
+    <ul>
+      {% for class in classs %}
+      <li>
+        {{ class[0].id }}: <b>{{ class[0].name }}</b>
+        <ul>
+          {% for student in class[1] %}
+          <li>{{ student.id }}: <b>{{ student.name }}</b></li>
+          {% endfor %}
+        </ul>
+      </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
