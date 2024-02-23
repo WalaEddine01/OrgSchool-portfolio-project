@@ -4,20 +4,19 @@ Contains the class DBStorage
 """
 
 import models
-from models.amenity import Amenity
 from models.base_model import BaseModel, Base
 from models.student import Student
-from models.class import Place
+from models.school import School
 from models.teacher import Teacher
-from models.class import Class
+from models.sclass import SClass
 from models.admin import Admin
 from os import getenv
 import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
-classes = {"Amenity": Amenity, "Student": Student,
-           "Place": Place, "Teacher": Teacher, "Class": Class, "Admin": Admin}
+classes = {"BaseModel": BaseModel, "Student": Student,
+           "School": School, "Teacher": Teacher, "SClass": SClass, "Admin": Admin}
 
 
 class DBStorage:

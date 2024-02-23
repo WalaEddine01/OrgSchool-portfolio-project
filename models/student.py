@@ -10,13 +10,10 @@ from sqlalchemy.orm import relationship
 
 class Student(BaseModel, Base):
     """Representation of student """
-    if models.storage_t == "db":
+    if models.storage_t == 'db':
         __tablename__ = 'students'
         name = Column(String(128), nullable=False)
         sclass_id = Column(String(60), ForeignKey('sclasses.id'), nullable=False)
-        schools = relationship("Place",
-                              backref="cities",
-                              cascade="all, delete, delete-orphan")
     else:
         name = ""
 

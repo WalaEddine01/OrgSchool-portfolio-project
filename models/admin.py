@@ -17,9 +17,6 @@ class Admin(BaseModel, Base):
         email = Column(String(128), nullable=False)
         password = Column(String(128), nullable=False)
         username = Column(String(128), nullable=False)
-        schools = relationship("School",
-                               backref="admin",
-                               cascade="all, delete, delete-orphan")
     else:
         email = ""
         password = ""

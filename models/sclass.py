@@ -14,7 +14,7 @@ class SClass(BaseModel, Base):
     if models.storage_t == "db":
         __tablename__ = 'sclasses'
         name = Column(String(128), nullable=False)
-        school_id = Column(String(60), ForeignKey('schools.id'), nullable=False)
+
     else:
         name = ""
 
