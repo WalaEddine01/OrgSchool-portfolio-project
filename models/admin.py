@@ -16,15 +16,14 @@ class Admin(BaseModel, Base):
         __tablename__ = 'admins'
         email = Column(String(128), nullable=False)
         password = Column(String(128), nullable=False)
-        first_name = Column(String(128), nullable=True)
-        last_name = Column(String(128), nullable=True)
-        schools = relationship("School", backref="admin")
-        teachers = relationship("Teacher", backref="admin")
+        username = Column(String(128), nullable=False)
+        schools = relationship("School",
+                               backref="admin",
+                               cascade="all, delete, delete-orphan")
     else:
         email = ""
         password = ""
-        first_name = ""
-        last_name = ""
+        username = ""
 
     def __init__(self, *args, **kwargs):
         """initializes admin"""

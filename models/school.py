@@ -12,25 +12,13 @@ class School(BaseModel, Base):
     """Representation of School """
     if models.storage_t == 'db':
         __tablename__ = 'schools'
-        student_id = Column(String(60), ForeignKey('students.id'), nullable=False)
+        sclass_id = Column(String(60), ForeignKey('sclasses.id'), nullable=False)
         admin_id = Column(String(60), ForeignKey('admins.id'), nullable=False)
-        number = Column(Integer, nullable=False, default=0)
-        max_guest = Column(Integer, nullable=False, default=0)
-        teachers = relationship("Teacher",
-                               backref="school",
-                               cascade="all, delete, delete-orphan")
+        name = Column(String(128), nullable=False)
+        
     else:
-        student_id = ""
-        admin_id = ""
         name = ""
-        description = ""
-        number_rooms = 0
-        number_bathrooms = 0
-        max_guest = 0
-        price_by_night = 0
-        latitude = 0.0
-        longitude = 0.0
-        amenity_ids = []
+
 
     def __init__(self, *args, **kwargs):
         """initializes School"""
@@ -38,13 +26,11 @@ class School(BaseModel, Base):
 
     if models.storage_t != 'db':
         @property
-        def teachers(self):
-            """getter attribute returns the list of Teacher instances"""
-            from models.teacher import Teacher
-            teacher_list = []
-            all_teachers = models.storage.all(Teacher)
-            for teacher in all_teachers.values():
-                if teacher.school_id == self.id:
-                    teacher_list.append(teacher)
-            return teacher_list
-
+        def sclasses(self):
+            """getter attribute that links with sclasses"""
+            list_sclasses = []
+            all_sclasses = models.storage.all('Sclass')
+            for sclass in all_sclasses.values():
+                if sclass.school_id == self.id:
+                    list_sclasses.append(sclass)
+            return list_sclasses

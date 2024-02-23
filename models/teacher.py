@@ -11,13 +11,11 @@ class Teacher(BaseModel, Base):
     """Representation of Teacher """
     if models.storage_t == 'db':
         __tablename__ = 'teachers'
+        name = Column(String(128), nullable=False)
         school_id = Column(String(60), ForeignKey('schools.id'), nullable=False)
-        admin_id = Column(String(60), ForeignKey('admins.id'), nullable=False)
-        text = Column(String(1024), nullable=False)
+
     else:
-        school_id = ""
-        admin_id = ""
-        text = ""
+        name = ""
 
     def __init__(self, *args, **kwargs):
         """initializes Teacher"""
