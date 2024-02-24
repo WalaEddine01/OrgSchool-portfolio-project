@@ -59,11 +59,12 @@ def post_admin():
     """
     if not request.get_json():
         abort(400, description="Not a JSON")
-
     if 'email' not in request.get_json():
         abort(400, description="Missing email")
     if 'password' not in request.get_json():
         abort(400, description="Missing password")
+    if 'username' not in request.get_json():
+        abort(400, description="Missing username")
 
     data = request.get_json()
     instance = Admin(**data)

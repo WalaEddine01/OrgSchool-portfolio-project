@@ -1,10 +1,9 @@
 #!/usr/bin/python3
 """ Index """
-from models.amenity import Amenity
 from models.student import Student
-from models.class import Place
+from models.sclass import SClass
 from models.teacher import Teacher
-from models.class import Class
+from models.school import School
 from models.admin import Admin
 from models import storage
 from api.v1.views import app_views
@@ -20,8 +19,8 @@ def status():
 @app_views.route('/stats', methods=['GET'], strict_slashes=False)
 def number_objects():
     """ Retrieves the number of each objects by type """
-    classes = [Amenity, Student, Place, Teacher, Class, Admin]
-    names = ["amenities", "cities", "schools", "teachers", "classs", "admins"]
+    classes = [Student, School, SClass, Teacher, Admin]
+    names = ["students", "schools", "sclasses", "teachers", "admins"]
 
     num_objs = {}
     for i in range(len(classes)):

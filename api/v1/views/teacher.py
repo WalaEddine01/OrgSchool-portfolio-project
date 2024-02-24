@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ objects that handle all default RestFul API actions for Teachers """
 from models.teacher import Teacher
-from models.class import Place
+from models.sclass import SClass
 from models.admin import Admin
 from models import storage
 from api.v1.views import app_views
@@ -9,19 +9,20 @@ from flask import abort, jsonify, make_response, request
 from flasgger.utils import swag_from
 
 
-@app_views.route('/schools/<school_id>/teachers', methods=['GET'],
-                 strict_slashes=False)
+@app_views.route('/sclasses/<sclass_id>/teachers', methods=['GET'],
+                    strict_slashes=False)
 @swag_from('documentation/teachers/get_teachers.yml', methods=['GET'])
-def get_teachers(school_id):
+def get_teachers(sclass_id):
     """
     Retrieves the list of all Teacher objects of a Place
     """
-    school = storage.get(Place, school_id)
-
-    if not school:
+    sclass = storage.get(SClass, sclass_id)
+    if not sclass:
         abort(404)
 
-    teachers = [teacher.to_dict() for teacher in school.teachers]
+    teachers = []
+    for teacher in sclass.teachers:
+        teachers.append(teacher.to_dict())
 
     return jsonify(teachers)
 
@@ -58,34 +59,26 @@ def delete_teacher(teacher_id):
     return make_response(jsonify({}), 200)
 
 
-@app_views.route('/schools/<school_id>/teachers', methods=['POST'],
-                 strict_slashes=False)
+@app_views.route('/sclasses/<sclass_id>/teachers', methods=['POST'],
+                    strict_slashes=False)
 @swag_from('documentation/teachers/post_teachers.yml', methods=['POST'])
-def post_teacher(school_id):
+def post_teacher(sclass_id):
     """
     Creates a Teacher
     """
-    school = storage.get(Place, school_id)
+    sclass = storage.get(SClass, sclass_id)
 
-    if not school:
+    if not sclass:
         abort(404)
 
     if not request.get_json():
         abort(400, description="Not a JSON")
 
-    if 'admin_id' not in request.get_json():
-        abort(400, description="Missing admin_id")
+    if 'name' not in request.get_json():
+        abort(400, description="Missing name")
 
     data = request.get_json()
-    admin = storage.get(Admin, data['admin_id'])
-
-    if not admin:
-        abort(404)
-
-    if 'text' not in request.get_json():
-        abort(400, description="Missing text")
-
-    data['school_id'] = school_id
+    data['sclass_id'] = sclass_id
     instance = Teacher(**data)
     instance.save()
     return make_response(jsonify(instance.to_dict()), 201)
@@ -105,7 +98,7 @@ def put_teacher(teacher_id):
     if not request.get_json():
         abort(400, description="Not a JSON")
 
-    ignore = ['id', 'admin_id', 'school_id', 'created_at', 'updated_at']
+    ignore = ['id', 'created_at', 'updated_at', 'sclass_id']
 
     data = request.get_json()
     for key, value in data.items():

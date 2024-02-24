@@ -1,32 +1,31 @@
 #!/usr/bin/python3
-""" objects that handles all default RestFul API actions for cities """
+""" objects that handles all default RestFul API actions for students """
 from models.student import Student
-from models.class import Class
+from models.sclass import SClass
 from models import storage
 from api.v1.views import app_views
 from flask import abort, jsonify, make_response, request
 from flasgger.utils import swag_from
 
 
-@app_views.route('/classs/<class_id>/cities', methods=['GET'],
+@app_views.route('/sclasses/<sclass_id>/students', methods=['GET'],
                  strict_slashes=False)
-@swag_from('documentation/student/cities_by_class.yml', methods=['GET'])
-def get_cities(class_id):
+@swag_from('documentation/student/get_students.yml', methods=['GET'])
+def get_cities(sclass_id):
     """
-    Retrieves the list of all cities objects
-    of a specific Class, or a specific student
+    Retrieves the list of all student objects
+    of a specific SClass, or a specific student
     """
-    list_cities = []
-    class = storage.get(Class, class_id)
-    if not class:
+    sclass = storage.get(SClass, sclass_id)
+    if not sclass:
         abort(404)
-    for student in class.cities:
-        list_cities.append(student.to_dict())
+    list_students = []
+    for student in sclass.students:
+        list_students.append(student.to_dict())
+    return jsonify(list_students)
 
-    return jsonify(list_cities)
 
-
-@app_views.route('/cities/<student_id>/', methods=['GET'], strict_slashes=False)
+@app_views.route('/students/<student_id>/', methods=['GET'], strict_slashes=False)
 @swag_from('documentation/student/get_student.yml', methods=['GET'])
 def get_student(student_id):
     """
@@ -38,7 +37,7 @@ def get_student(student_id):
     return jsonify(student.to_dict())
 
 
-@app_views.route('/cities/<student_id>', methods=['DELETE'], strict_slashes=False)
+@app_views.route('/students/<student_id>', methods=['DELETE'], strict_slashes=False)
 @swag_from('documentation/student/delete_student.yml', methods=['DELETE'])
 def delete_student(student_id):
     """
@@ -54,29 +53,31 @@ def delete_student(student_id):
     return make_response(jsonify({}), 200)
 
 
-@app_views.route('/classs/<class_id>/cities', methods=['POST'],
+@app_views.route('/sclasses/<sclass_id>/students', methods=['POST'],
                  strict_slashes=False)
 @swag_from('documentation/student/post_student.yml', methods=['POST'])
-def post_student(class_id):
+def post_student(sclass_id):
     """
     Creates a Student
     """
-    class = storage.get(Class, class_id)
-    if not class:
+    sclass = storage.get(SClass, sclass_id)
+    if not sclass:
         abort(404)
     if not request.get_json():
         abort(400, description="Not a JSON")
     if 'name' not in request.get_json():
         abort(400, description="Missing name")
+    if 'age' not in request.get_json() or type(request.get_json()['age']) is not int:
+        abort(400, description="Missing age")
 
     data = request.get_json()
+    data['sclass_id'] = sclass_id
     instance = Student(**data)
-    instance.class_id = class.id
     instance.save()
     return make_response(jsonify(instance.to_dict()), 201)
 
 
-@app_views.route('/cities/<student_id>', methods=['PUT'], strict_slashes=False)
+@app_views.route('/students/<student_id>', methods=['PUT'], strict_slashes=False)
 @swag_from('documentation/student/put_student.yml', methods=['PUT'])
 def put_student(student_id):
     """
