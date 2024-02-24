@@ -37,15 +37,12 @@ def delete_admin(admin_id):
     """
     Deletes a admin Object
     """
-
     admin = storage.get(Admin, admin_id)
-
     if not admin:
         abort(404)
 
     storage.delete(admin)
     storage.save()
-
     return make_response(jsonify({}), 200)
 
 
@@ -61,8 +58,8 @@ def post_admin():
         abort(400, description="Missing email")
     if 'password' not in request.get_json():
         abort(400, description="Missing password")
-    if 'username' not in request.get_json():
-        abort(400, description="Missing username")
+    if 'school_name' not in request.get_json():
+        abort(400, description="Missing School_name")
 
     data = request.get_json()
     instance = Admin(**data)
@@ -77,18 +74,15 @@ def put_admin(admin_id):
     Updates a admin
     """
     admin = storage.get(Admin, admin_id)
-
     if not admin:
         abort(404)
 
     if not request.get_json():
         abort(400, description="Not a JSON")
 
-    ignore = ['id', 'email', 'created_at', 'updated_at']
-
     data = request.get_json()
     for key, value in data.items():
-        if key not in ignore:
+        if key not in ['id', 'email', 'password']:
             setattr(admin, key, value)
     storage.save()
     return make_response(jsonify(admin.to_dict()), 200)
