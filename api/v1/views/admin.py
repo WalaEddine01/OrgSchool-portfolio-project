@@ -14,11 +14,9 @@ def get_admins():
     Retrieves the list of all admin objects
     or a specific admin
     """
-    all_admins = storage.all(Admin).values()
-    list_admins = []
-    for admin in all_admins:
-        list_admins.append(admin.to_dict())
-    return jsonify(list_admins)
+    admins = storage.all(Admin).values()
+    admins = [admin.to_dict() for admin in admins]
+    return jsonify(admins)
 
 
 @app_views.route('/admins/<admin_id>', methods=['GET'], strict_slashes=False)

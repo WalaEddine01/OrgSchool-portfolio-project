@@ -26,29 +26,32 @@ class DBStorage:
 
     def __init__(self):
         """Instantiate a DBStorage object"""
-        HBNB_MYSQL_USER = getenv('HBNB_MYSQL_USER')
-        HBNB_MYSQL_PWD = getenv('HBNB_MYSQL_PWD')
-        HBNB_MYSQL_HOST = getenv('HBNB_MYSQL_HOST')
-        HBNB_MYSQL_DB = getenv('HBNB_MYSQL_DB')
-        HBNB_ENV = getenv('HBNB_ENV')
+        ORG_MYSQL_USER = getenv('ORG_MYSQL_USER')
+        ORG_MYSQL_PWD = getenv('ORG_MYSQL_PWD')
+        ORG_MYSQL_HOST = getenv('ORG_MYSQL_HOST')
+        ORG_MYSQL_DB = getenv('ORG_MYSQL_DB')
+        ORG_ENV = getenv('ORG_ENV')
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.
-                                      format(HBNB_MYSQL_USER,
-                                             HBNB_MYSQL_PWD,
-                                             HBNB_MYSQL_HOST,
-                                             HBNB_MYSQL_DB))
-        if HBNB_ENV == "test":
+                                      format(ORG_MYSQL_USER,
+                                             ORG_MYSQL_PWD,
+                                             ORG_MYSQL_HOST,
+                                             ORG_MYSQL_DB))
+        if ORG_ENV == "test":
             Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
         """query on the current database session"""
         new_dict = {}
-        for clss in classes:
-            if cls is None or cls is classes[clss] or cls is clss:
-                objs = self.__session.query(classes[clss]).all()
-                for obj in objs:
-                    key = obj.__class__.__name__ + '.' + obj.id
+        if cls:
+            for obj in self.__session.query(cls):
+                key = "{}.{}".format(type(obj).__name__, obj.id)
+                new_dict[key] = obj
+        else:
+            for clas in classes.values():
+                for obj in self.__session.query(clas):
+                    key = "{}.{}".format(type(obj).__name__, obj.id)
                     new_dict[key] = obj
-        return (new_dict)
+        return new_dict
 
     def new(self, obj):
         """add the object to the current database session"""
@@ -103,3 +106,7 @@ class DBStorage:
             count = len(models.storage.all(cls).values())
 
         return count
+    
+    def get_session(self):
+        """ return the session """
+        return self.__session

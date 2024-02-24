@@ -10,3 +10,13 @@ from flask import abort, jsonify, make_response, request
 from flasgger.utils import swag_from
 
 
+@app_views.route('/schools', methods=['GET'], strict_slashes=False)
+@swag_from('documentation/school/all_schools.yml')
+def get_schools():
+    """
+    Retrieves the list of all school objects
+    or a specific school
+    """
+    schools = storage.all(School).values()
+    schools = [school.to_dict() for school in schools]
+    return jsonify(schools)
