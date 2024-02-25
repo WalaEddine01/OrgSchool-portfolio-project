@@ -1,19 +1,19 @@
-    Updates the sclass info based on ID
-    ---
-    tags:
-      - SClasss
-    parameters:
-      - name: sclass_id
-        in: path
-        type: string
-        required: true
-        description: the unique id of the sclass
-      - name: request
-        in: body
-        required: true
-
-    responses:
-      404:
-        description: Class not found
-      200:
-        description: Request executed successfully
+Updates the sclass info based on ID
+---
+tags:
+  - SClass
+parameters:
+  - name: sclass_id
+    in: path
+    type: string
+    required: true
+    description: the unique id of the sclass
+  - name: request
+    in: body
+    required: true
+    description: the updated sclass informati
+responses:
+  404:
+    description: Class not found
+  200:
+    description: Request executed successful

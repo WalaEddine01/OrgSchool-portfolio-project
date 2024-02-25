@@ -1,7 +1,7 @@
     Updates a student based on id
     ---
     tags:
-      - students
+      - student
     parameters:
       - name: student_id
         in: path

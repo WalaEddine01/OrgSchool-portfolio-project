@@ -1,7 +1,7 @@
 get a specific student  based on the sclass_id
 ---
 tags:
-  - students
+  - student
 parameters:
   - name: student_id
     in: path

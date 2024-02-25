@@ -1,7 +1,7 @@
     Post a new student
     ---
     tags:
-      - students
+      - student
     parameters:
       - class_id:
         in: path

@@ -1,7 +1,7 @@
     posts a new admin
     ---
     tags:
-      - Admins
+      - Admin
     parameters:
       - name: admin_and_password
         in: body

@@ -1,7 +1,7 @@
 retrieves a list of all admins.
 ---
 tags:
-  - Admins
+  - Admin
 
 responses:
   200:

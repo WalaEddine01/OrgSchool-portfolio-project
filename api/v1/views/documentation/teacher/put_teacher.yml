@@ -1,7 +1,7 @@
     Updates the teacher info based on ID
     ---
     tags:
-      - Teachers
+      - Teacher
     parameters:
       - name: teacher_id
         in: path

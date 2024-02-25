@@ -10,7 +10,7 @@ from flasgger.utils import swag_from
 
 @app_views.route('/sclasses/<sclass_id>/students', methods=['GET'],
                  strict_slashes=False)
-@swag_from('documentation/student/students_by_sclass.yml', methods=['GET'])
+@swag_from('documentation/student/all_students.yml', methods=['GET'])
 def get_cities(sclass_id):
     """ Retrieves the list of all students of a class """
     sclass = storage.get(SClass, sclass_id)

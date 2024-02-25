@@ -1,7 +1,7 @@
 retrieves a specific admin.
 ---
 tags:
-  - Admins
+  - Admin
 parameters:
   - name: admin_id
     in: path

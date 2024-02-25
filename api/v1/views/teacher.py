@@ -11,7 +11,7 @@ from flasgger.utils import swag_from
 
 @app_views.route('/sclasses/<sclass_id>/teachers', methods=['GET'],
                  strict_slashes=False)
-@swag_from('documentation/teachers/get_teachers.yml', methods=['GET'])
+@swag_from('documentation/teacher/all_teachers.yml', methods=['GET'])
 def get_teachers(sclass_id):
     """ Retrieves the list of all teachers of a class """
     sclass = storage.get(SClass, sclass_id)

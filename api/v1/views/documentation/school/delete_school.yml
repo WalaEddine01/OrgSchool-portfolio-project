@@ -1,7 +1,7 @@
     Deletes a school based on the id provided
     ---
     tags:
-      - Places
+      - School
     parameters:
       - name: school_id
         in: path

@@ -1,7 +1,7 @@
-Gets a specific sclass by ID or the list of all sclasss if no ID is specied
+retrieve all sclases
 ---
 tags:
-  - SClasss
+  - SClass
 parameters:
   - name: sclass_id
     in: path

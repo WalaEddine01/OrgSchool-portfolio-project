@@ -1,15 +1,15 @@
-    Deletes a sclass based on the id provided
-    ---
-    tags:
-      - SClasss
-    parameters:
-      - name: sclass_id
-        in: path
-        type: string
-        required: true
-        description: The uuid of the class to delete
-    responses:
-      404:
-        description: SClass not found!
-      200:
-        description: Deletion request sucessful
+Deletes a sclass based on the id provided
+---
+tags:
+  - SClass
+parameters:
+  - name: sclass_id
+    in: path
+    type: string
+    required: true
+    description: The uuid of the class to delete
+responses:
+  404:
+    description: SClass not found!
+  200:
+    description: Deletion request sucessful

@@ -1,19 +1,18 @@
-    Posts a new sclass.
-    ---
-    tags:
-      - SClasss
-    parameters:
-      - name: request
-        in: body
-        required: true
-        requires:
-          - name
-        properties:
-          name:
-            type: string
-
-    responses:
-      400:
-        description: Missing name or Not Valid JSON
-      201:
-        description: Request completed successfully
+create sclass object
+---
+tags:
+  - SClass
+parameters:
+  - name: request
+    in: body
+    required: true
+    description: the sclass information
+responses:
+  201:
+    description: SClass created
+  400:
+    description: Invalid input
+  409:
+    description: SClass already exists
+  500:
+    description: Internal server error

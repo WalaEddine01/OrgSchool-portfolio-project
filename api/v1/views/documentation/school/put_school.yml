@@ -1,29 +1,20 @@
-update the school details:
-  put:
+    updates school information
+    ---
     tags:
-      - "School"
-    summary: "Update the school details"
-    description: "This API is used to update the school details"
-    operationId: "updateSchool"
-    consumes:
-      - "application/json"
-    produces:
-      - "application/json"
+      - School
     parameters:
-      - in: "body"
-        name: "body"
-        description: "School object that needs to be updated"
+      - name: school_id
+        in: path
+        type: string
         required: true
-        schema:
-          $ref: "#/definitions/School"
+        description: The id of the school to update
+      - name: update_request
+        in: body
+        required: true
+        description: The updated school information
+
     responses:
-      200:
-        description: "successful operation"
-        schema:
-          $ref: "#/definitions/School"
-      400:
-        description: "Invalid input"
       404:
-        description: "School not found"
-      405:
-        description: "Validation exception"
+        description: School not found!
+      200:
+        description: Request executed successfully

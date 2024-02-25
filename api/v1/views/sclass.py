@@ -10,7 +10,7 @@ from flasgger.utils import swag_from
 
 @app_views.route('/schools/<school_id>/sclasses', methods=['GET'],
                     strict_slashes=False)
-@swag_from('swagger_yaml/sclass/get_sclass.yml', methods=['GET'])
+@swag_from('documentation/sclass/all_sclasses.yml', methods=['GET'])
 def get_classes(school_id):
     """ Retrieves the list of all Classs of a School """
     school = storage.get(School, school_id)
@@ -19,10 +19,9 @@ def get_classes(school_id):
     classes = [sclass.to_dict() for sclass in school.sclasses]
     return jsonify(classes)
 
-
 @app_views.route('/schools/<school_id>/sclasses/<sclass_id>', methods=['GET'],
                     strict_slashes=False)
-@swag_from('swagger_yaml/sclass/get_id_sclass.yml', methods=['GET'])
+@swag_from('documentation/sclass/get_sclass.yml', methods=['GET'])
 def get_class(school_id, sclass_id):
     """ Retrieves a Class """
     school = storage.get(School, school_id)
@@ -35,7 +34,7 @@ def get_class(school_id, sclass_id):
 
 @app_views.route('/schools/<school_id>/sclasses/<sclass_id>', methods=['DELETE'],
                  strict_slashes=False)
-@swag_from('swagger_yaml/sclass/delete_sclass.yml', methods=['DELETE'])
+@swag_from('documentation/sclass/delete_sclass.yml', methods=['DELETE'])
 def delete_class(school_id, sclass_id):
     """
     Deletes a Class Object
@@ -50,10 +49,9 @@ def delete_class(school_id, sclass_id):
     storage.save()
     return make_response(jsonify({}), 200)
 
-
 @app_views.route('/schools/<school_id>/sclasses', methods=['POST'],
                  strict_slashes=False)
-@swag_from('swagger_yaml/sclass/post_sclass.yml', methods=['POST'])
+@swag_from('documentation/sclass/post_sclass.yml', methods=['POST'])
 def post_class(school_id):
     """
     Creates a Class
@@ -75,7 +73,7 @@ def post_class(school_id):
 
 @app_views.route('/schools/<school_id>/sclasses/<sclass_id>', methods=['PUT'],
                     strict_slashes=False)
-@swag_from('swagger_yaml/sclass/put_sclass.yml', methods=['PUT'])
+@swag_from('documentation/sclass/put_sclass.yml', methods=['PUT'])
 def put_class(school_id, sclass_id):
     """
     Updates a Class
@@ -94,3 +92,4 @@ def put_class(school_id, sclass_id):
             setattr(sclass, key, value)
     storage.save()
     return make_response(jsonify(sclass.to_dict()), 200)
+

@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 """ objects that handle all default RestFul API actions for Places """
-from models.sclass import SClass
-from models.student import Student
 from models.school import School
 from models.admin import Admin
 from models import storage
@@ -11,7 +9,7 @@ from flasgger.utils import swag_from
 
 
 @app_views.route('/schools', methods=['GET'], strict_slashes=False)
-@swag_from('documentation/school/get_schools.yml', methods=['GET'])
+@swag_from('documentation/school/all_schools.yml', methods=['GET'])
 def get_schools():
     """
     Retrieves the list of all school objects

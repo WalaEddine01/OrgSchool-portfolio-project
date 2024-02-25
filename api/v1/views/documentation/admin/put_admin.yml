@@ -1,7 +1,7 @@
     updates admin information
     ---
     tags:
-      - Admins
+      - Admin
     parameters:
       - name: admin_id
         in: path

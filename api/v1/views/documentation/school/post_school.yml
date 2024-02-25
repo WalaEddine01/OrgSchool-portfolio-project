@@ -1,7 +1,7 @@
     Posts a new school.
     ---
     tags:
-      - Schools
+      - School
     parameters:
       - name: school_id
         in: path
