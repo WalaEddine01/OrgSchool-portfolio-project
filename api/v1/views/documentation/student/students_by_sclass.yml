@@ -1,11 +1,18 @@
-retrieves a list of all admins.
+get a list of students based on the sclass_id
 ---
 tags:
-  - Admins
-
+  - students
+parameters:
+  - name: sclass_id
+    in: path
+    type: string
+    required: true
+    description: The uniqe id of the class
 responses:
+  404:
+    description: No class is linked to the ID!
   200:
-    description: request executed successfully
+    description: Request completed successfully
     schema:
       type: array
       items:
@@ -21,15 +28,9 @@ responses:
           id:
             type: string
             description: The uuid of the instance
-          email:
+          class_id:
             type: string
-            description: admin's email
-          password:
+            description: uuid of the student's class
+          name:
             type: string
-            description: admin's password
-          first_name:
-            type: string
-            description: admin's first name
-          last_name:
-            type: string
-            description: admin's last name
+            description: student name

@@ -1,25 +1,29 @@
-    Updates the school info based on ID
+    Posts a new teacher
     ---
     tags:
-      - Places
+      - Teachers
     parameters:
-      - name: school_id
+      - name: teacher_id
         in: path
         type: string
         required: true
-        description: The unique id of the school
-      - name: parameters to update
+        description: The id of the school to retrieve
+      - name: teacher
         in: body
         required: true
         requires:
-          - parameter
+          - admin_id:
+          - text:
         properties:
-          parameter:
+          admin_id:
             type: string
+          text:
+            type: string
+
     responses:
       404:
         description: resource not found!
       400:
-         description: Not a Valid JSON
-      200:
+        description: missing admin_id, text, or Invalid JSON
+      201:
         description: Successful request

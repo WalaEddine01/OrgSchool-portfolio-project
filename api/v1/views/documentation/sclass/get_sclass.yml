@@ -1,14 +1,7 @@
-Gets the list of all amenities of a school
+Gets the list of all sclasss
 ---
 tags:
-  - Place_Amenities
-parameters:
-  - name: school_id
-    in: path
-    type: string
-    required: true
-    description: the unique id of the school
-
+  - SClasss
 responses:
   200:
     description: Successful request
@@ -26,9 +19,7 @@ responses:
             description: time of last update of the instance
           id:
             type: string
-            description: The uuid of the class instance
+            description: The uuid of the sclass instance
           name:
             type: string
-            description: name of the amenity
-  404:
-    description: Place not found
+            description: SClass name

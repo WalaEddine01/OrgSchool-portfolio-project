@@ -8,7 +8,7 @@ from flasgger.utils import swag_from
 
 
 @app_views.route('/admins', methods=['GET'], strict_slashes=False)
-@swag_from('documentation/admin/all_admins.yml')
+@swag_from('documentation/admin/all_admins.yml', methods=['GET'])
 def get_admins():
     """
     Retrieves the list of all admin objects

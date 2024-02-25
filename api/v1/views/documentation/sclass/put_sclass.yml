@@ -1,13 +1,13 @@
-    Updates the class info based on ID
+    Updates the sclass info based on ID
     ---
     tags:
-      - Classs
+      - SClasss
     parameters:
-      - name: class_id
+      - name: sclass_id
         in: path
         type: string
         required: true
-        description: the unique id of the class
+        description: the unique id of the sclass
       - name: request
         in: body
         required: true

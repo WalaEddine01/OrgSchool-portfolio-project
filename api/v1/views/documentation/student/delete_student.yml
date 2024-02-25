@@ -1,7 +1,7 @@
     deletes a student based on id
     ---
     tags:
-      - Cities
+      - students
     parameters:
       - name: student_id
         in: path

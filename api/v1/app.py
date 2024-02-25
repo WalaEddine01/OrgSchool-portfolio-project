@@ -8,10 +8,11 @@ from flask_cors import CORS
 from flasgger import Swagger
 from flasgger.utils import swag_from
 
+
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 app.register_blueprint(app_views)
-CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
+cors = CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
 
 
 @app.teardown_appcontext
@@ -31,7 +32,7 @@ def not_found(error):
     return make_response(jsonify({'error': "Not found"}), 404)
 
 app.config['SWAGGER'] = {
-    'title': 'Org_School API',
+    'title': 'AirBnB clone Restful API',
     'uiversion': 3
 }
 
@@ -40,8 +41,8 @@ Swagger(app)
 
 if __name__ == "__main__":
     """ Main Function """
-    host = environ.get('ORG_API_HOST')
-    port = environ.get('ORG_API_PORT')
+    host = environ.get('HBNB_API_HOST')
+    port = environ.get('HBNB_API_PORT')
     if not host:
         host = '0.0.0.0'
     if not port:

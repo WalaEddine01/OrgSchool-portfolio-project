@@ -1,18 +1,16 @@
-retrieves a specific admin.
+get a specific student  based on the sclass_id
 ---
 tags:
-  - Admins
+  - students
 parameters:
-  - name: admin_id
+  - name: student_id
     in: path
     type: string
     required: true
-    description: The id of the admin to retrieve
+    description: The uniqe id of the student
 responses:
-  404:
-    description: admin not found!
   200:
-    description: request executed successfully
+    description: Successful request
     schema:
       properties:
         __class__:
@@ -26,15 +24,9 @@ responses:
         id:
           type: string
           description: The uuid of the instance
-        email:
+        class_id:
           type: string
-          description: admin's email
-        password:
+          description: uuid of the student's class
+        name:
           type: string
-          description: admin's password
-        first_name:
-          type: string
-          description: admin's first name
-        last_name:
-          type: string
-          description: admin's last name
+          description: student name

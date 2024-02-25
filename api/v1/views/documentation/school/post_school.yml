@@ -1,19 +1,19 @@
     Posts a new school.
     ---
     tags:
-      - Places
+      - Schools
     parameters:
-      - name: student_id
+      - name: school_id
         in: path
         type: string
         required: true
-        description: The id of the Student to link to
-      - name: admin_id and name
+        description: The id of the school to retrieve
+      - name: school
         in: body
         required: true
         requires:
-          - admin_id
-          - name
+          - admin_id:
+          - name:
         properties:
           admin_id:
             type: string

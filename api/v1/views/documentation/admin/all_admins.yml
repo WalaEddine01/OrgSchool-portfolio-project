@@ -1,18 +1,11 @@
-get a list of cities based on the class_id
+retrieves a list of all admins.
 ---
 tags:
-  - Cities
-parameters:
-  - name: class_id
-    in: path
-    type: string
-    required: true
-    description: The uniqe id of the class
+  - Admins
+
 responses:
-  404:
-    description: No class is linked to the ID!
   200:
-    description: Request completed successfully
+    description: request executed successfully
     schema:
       type: array
       items:
@@ -28,9 +21,12 @@ responses:
           id:
             type: string
             description: The uuid of the instance
-          class_id:
+          email:
             type: string
-            description: uuid of the student's class
-          name:
+            description: admin's email
+          password:
             type: string
-            description: student name
+            description: admin's password
+          school_name:
+            type: string
+            description: admin's school name

@@ -1,14 +1,16 @@
-Retrieves a Teacher
+Gets a specific sclass by ID or the list of all sclasss if no ID is specied
 ---
 tags:
-  - Teachers
+  - SClasss
 parameters:
-  - name: teacher_id
+  - name: sclass_id
     in: path
     type: string
-    required: true
-    description: the unique id of the teacher
+    required: false
+    description: the unique id of the class
 responses:
+  404:
+    description: SClass not found
   200:
     description: Successful request
     schema:
@@ -24,11 +26,6 @@ responses:
         id:
           type: string
           description: The uuid of the class instance
-        text:
+        name:
           type: string
-          description: Description of the school
-        school_id:
-          type: string
-          description: uuid of the school
-  404:
-    description: Place not found
+          description: SClass name

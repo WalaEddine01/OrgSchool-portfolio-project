@@ -1,9 +1,9 @@
-    Links an amenity object to a school
+    Posts a new sclass.
     ---
     tags:
-      - Amenities
+      - SClasss
     parameters:
-      - name: amenity_id
+      - name: request
         in: body
         required: true
         requires:
@@ -14,6 +14,6 @@
 
     responses:
       400:
-        description: Not a JSON
+        description: Missing name or Not Valid JSON
       201:
-        description: request executed successfully
+        description: Request completed successfully

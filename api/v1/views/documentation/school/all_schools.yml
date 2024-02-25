@@ -1,0 +1,7 @@
+retrieves a list of all schools.
+---
+- name: Retrieve all schools
+  uri:
+    url: "http://localhost:PORT/schools"
+    method: GET
+  register: schools

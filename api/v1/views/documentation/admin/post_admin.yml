@@ -9,11 +9,15 @@
         requires:
           - email:
           - password:
+          - school_name:
         properties:
           email:
             type: string
           password:
             type: string
+          school_name:
+            type: string
+        description: The admin's email and password
 
     responses:
       400:

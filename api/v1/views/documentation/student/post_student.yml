@@ -1,7 +1,7 @@
     Post a new student
     ---
     tags:
-      - Cities
+      - students
     parameters:
       - class_id:
         in: path
@@ -19,7 +19,7 @@
 
     responses:
       404:
-        description: Class not found!
+        description: SClass not found!
       400:
         description: Not a valid JSON or missing name
       201:
