@@ -16,7 +16,7 @@ classes = {"BaseModel": BaseModel, "Student": Student,
            "School": School, "Teacher": Teacher, "SClass": SClass, "Admin": Admin}
 
 
-class HBNBCommand(cmd.Cmd):
+class ORGCommand(cmd.Cmd):
     """ ORG console """
     prompt = "(ORG) "
 
@@ -160,4 +160,4 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
 if __name__ == '__main__':
-    HBNBCommand().cmdloop()
+    ORGCommand().cmdloop()
