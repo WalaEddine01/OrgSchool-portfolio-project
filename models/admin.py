@@ -51,10 +51,8 @@ class Admin(BaseModel, Base):
     def create_school_and_4_sclasses(self):
         """Creates a school and 4 sclasses after an admin is created"""
         new_school = School(admin_id=self.id, name=self.school_name)
-        new_school.save()
         for i in range(4):
             new_sclass = SClass(school_id=new_school.id, name="SClass " + str(i + 1))
-            new_sclass.save()
         models.storage.save()
 
 if models.storage_t == 'db':
