@@ -10,6 +10,13 @@ class regestrationForm(FlaskForm):
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Sign Up')
 
+    def validate_school_name(self, school_name):
+        pass
+
+    def validate_email(self, email):
+        pass
+
+
 class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])

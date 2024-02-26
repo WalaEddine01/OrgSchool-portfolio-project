@@ -1,17 +1,24 @@
 #!/usr/bin/python3
 """ holds class admin"""
+from time import sleep
+print('1----')
+sleep(0.5)
 import models
+print('2----')
+sleep(0.5)
 from models.base_model import BaseModel, Base
 from models.school import School
 from models.sclass import SClass
-from os import getenv
-import sqlalchemy
 from sqlalchemy import Column, String, event
 from sqlalchemy.orm import relationship
 from hashlib import md5
 
+print('3----')
+sleep(0.5)
 
 class Admin(BaseModel, Base):
+    print('4----')
+    sleep(0.5)
     """Representation of a admin """
     if models.storage_t == 'db':
         __tablename__ = 'admins'
@@ -21,14 +28,20 @@ class Admin(BaseModel, Base):
         schools = relationship("School", back_populates="admin")
 
     else:
+        print('8----')
+        sleep(0.5)
         email = ""
         password = ""
+        print('9----')
+        sleep(0.5)
         school_name = ""
 
     def __init__(self, *args, **kwargs):
         """initializes admin"""
         super().__init__(*args, **kwargs)
         if models.storage_t != 'db':
+            print('10----')
+            sleep(0.5)
             self.create_school_and_4_sclasses()
 
     def __setattr__(self, name, value):

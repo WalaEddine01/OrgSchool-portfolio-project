@@ -5,6 +5,9 @@ from forms import *
 import sqlalchemy
 import os
 from flask_cors import CORS
+from sqlalchemy import create_engine
+
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(24)
@@ -23,18 +26,18 @@ def about():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = regestrationForm()
-    
+    if form.validate_on_submit():
+        flash(f'Account created for {form.school_name.data}!', 'success')
+        return redirect(url_for('login'))
     return render_template('register.html', title='register', form=form)
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route("/login", methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        if form.email.data == 'admin@blog.com' and form.password.data == 'password':
             flash('You have been logged in!', 'success')
             return redirect(url_for('home'))
-        else:
-            flash('Login Unsuccessful. Please check username and password', 'danger')
+    flash('Login Unsuccessful. Please check email and password', 'danger')
     return render_template('login.html', title='Login', form=form)
 
 
