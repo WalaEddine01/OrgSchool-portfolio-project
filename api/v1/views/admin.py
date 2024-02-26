@@ -62,9 +62,9 @@ def post_admin():
         abort(400, description="Missing School_name")
 
     data = request.get_json()
-    instance = Admin(**data)
-    instance.save()
-    return make_response(jsonify(instance.to_dict()), 201)
+    admin = Admin(**data)
+    admin.save()
+    return make_response(jsonify(admin.to_dict()), 201)
 
 
 @app_views.route('/admins/<admin_id>', methods=['PUT'], strict_slashes=False)

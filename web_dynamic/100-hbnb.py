@@ -1,10 +1,9 @@
 #!/usr/bin/python3
 """ Starts a Flash Web Application """
 from models import storage
-from models.class import Class
+from models.school import School
 from models.student import Student
-from models.amenity import Amenity
-from models.class import Place
+from models.sclass import SClass
 from uuid import uuid4
 from os import environ
 from flask import Flask, render_template
@@ -22,26 +21,26 @@ def close_db(error):
 @app.route('/100-hbnb/', strict_slashes=False)
 def hbnb():
     """ ORG is alive! """
-    classs = storage.all(Class).values()
+    classs = storage.all(SClass).values()
     classs = sorted(classs, key=lambda k: k.name)
     st_ct = []
+    
 
-    for class in classs:
-        st_ct.append([class, sorted(class.cities, key=lambda k: k.name)])
+    for c in classs:
+        students = storage.all(Student).values()
+        students = sorted(students, key=lambda k: k.name)
+        st_ct.append([c, students])
 
-    amenities = storage.all(Amenity).values()
-    amenities = sorted(amenities, key=lambda k: k.name)
-
-    schools = storage.all(Place).values()
+    schools = storage.all(School).values()
     schools = sorted(schools, key=lambda k: k.name)
 
+
     return render_template('100-hbnb.html',
-                           classs=st_ct,
-                           amenities=amenities,
+                           classes=st_ct,
                            schools=schools,
                            cache_id=uuid4())
 
 
 if __name__ == "__main__":
     """ Main Function """
-    app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
+    app.run(host='0.0.0.0', port=5001, debug=True, threaded=True)
