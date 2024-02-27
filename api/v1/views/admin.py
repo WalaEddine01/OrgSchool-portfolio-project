@@ -64,6 +64,7 @@ def post_admin():
     data = request.get_json()
     admin = Admin(**data)
     storage.new(admin)
+    storage.save()
     return make_response(jsonify(data), 201)
 
 
