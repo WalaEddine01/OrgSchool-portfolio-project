@@ -23,12 +23,16 @@ class Admin(BaseModel, Base):
         email = ""
         password = ""
         school_name = ""
+        _school_created = False
 
     def __init__(self, *args, **kwargs):
         """initializes admin"""
         super().__init__(*args, **kwargs)
-        if models.storage_t != 'db':
-            self.create_school_and_4_sclasses()
+        
+        if models.storage_t != 'db' and not Admin._school_created:
+            Admin.create_school_and_4_sclasses(self.id, self.school_name)
+            Admin._school_created = True
+
 
     def __setattr__(self, name, value):
         """sets a password with md5 encryption"""
@@ -47,11 +51,14 @@ class Admin(BaseModel, Base):
                     list_schools.append(school)
             return list_schools
 
-    def create_school_and_4_sclasses(self):
+    @staticmethod
+    def create_school_and_4_sclasses(id, school_name):
         """Creates a school and 4 sclasses after an admin is created"""
-        new_school = School(admin_id=self.id, name=self.school_name)
+        new_school = School(admin_id=id, name=school_name)
+        models.storage.new(new_school)
         for i in range(4):
             new_sclass = SClass(school_id=new_school.id, name="SClass " + str(i + 1))
+            models.storage.new(new_sclass)
         models.storage.save()
 
 if models.storage_t == 'db':

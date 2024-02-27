@@ -63,8 +63,8 @@ def post_admin():
 
     data = request.get_json()
     admin = Admin(**data)
-    admin.save()
-    return make_response(jsonify(admin.to_dict()), 201)
+    storage.new(admin)
+    return make_response(jsonify(data), 201)
 
 
 @app_views.route('/admins/<admin_id>', methods=['PUT'], strict_slashes=False)
