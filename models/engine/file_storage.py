@@ -56,8 +56,10 @@ class FileStorage:
         try:
             with open(self.__file_path, 'r') as f:
                 jo = json.load(f)
-            for key in jo:
-                self.__objects[key] = classes[jo[key]["__class__"]](**jo[key])
+            for key, value in jo.items():
+                import time
+                self.__objects[key] = classes.get(value.get("__class__"))(**value)
+                self.save()
         except:
             pass
 
@@ -84,6 +86,22 @@ class FileStorage:
         for value in all_cls.values():
             if (value.id == id):
                 return value
+
+        return None
+    
+    def get_by_key(self, cls, key, value):
+        """
+        Returns the object based on the key, or
+        None if not found
+        """
+        if cls not in classes.values():
+            return None
+
+        all_cls = models.storage.all(cls)
+
+        for obj in all_cls.values():
+            if (getattr(obj, key) == value):
+                return obj
 
         return None
 

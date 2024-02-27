@@ -2,10 +2,7 @@
 
 from flask import Flask, render_template, url_for, flash, redirect
 from forms import *
-import sqlalchemy
 import os
-from flask_cors import CORS
-from sqlalchemy import create_engine
 
 
 
@@ -34,10 +31,10 @@ def register():
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     form = LoginForm()
-    if form.validate_on_submit():
+    if form.validate_on_submit() :
             flash('You have been logged in!', 'success')
             return redirect(url_for('home'))
-    flash('Login Unsuccessful. Please check email and password', 'danger')
+
     return render_template('login.html', title='Login', form=form)
 
 
