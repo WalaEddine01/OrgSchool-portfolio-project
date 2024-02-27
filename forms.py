@@ -2,6 +2,9 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo
+from models import storage
+from models.admin import Admin
+from wtforms.validators import ValidationError
 
 class regestrationForm(FlaskForm):
     school_name = StringField('School Name', validators=[DataRequired(), Length(min=2, max=24)])
@@ -11,10 +14,14 @@ class regestrationForm(FlaskForm):
     submit = SubmitField('Sign Up')
 
     def validate_school_name(self, school_name):
-        pass
+        admin = storage.get_by_key(Admin, "school_name", school_name)
+        if admin:
+            raise ValidationError('That school name is taken. Please choose a different one.')
 
     def validate_email(self, email):
-        pass
+        admin = storage.get_by_key(Admin, "email", email.data)
+        if admin:
+            raise ValidationError('That email is taken. Please choose a different one.')
 
 
 class LoginForm(FlaskForm):

@@ -7,7 +7,10 @@ from models import storage
 from models.admin import Admin
 
 
-admin = storage.get_by_key(Admin, "email", "walaa")
+admin = storage.get_by_key(Admin, "email", "wala@wa.co")
 
-print(admin)
+if admin:
+    print(admin.email)
+
+
 

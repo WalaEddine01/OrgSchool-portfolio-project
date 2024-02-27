@@ -34,7 +34,6 @@ def login():
     if form.validate_on_submit() :
             flash('You have been logged in!', 'success')
             return redirect(url_for('home'))
-
     return render_template('login.html', title='Login', form=form)
 
 

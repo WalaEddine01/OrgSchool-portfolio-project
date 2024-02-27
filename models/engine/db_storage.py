@@ -91,6 +91,22 @@ class DBStorage:
                 return value
 
         return None
+    
+    def get_by_key(self, cls, key, value):
+        """
+        Returns the object based on the key, or
+        None if not found
+        """
+        if cls not in classes.values():
+            return None
+
+        all_cls = models.storage.all(cls)
+
+        for obj in all_cls.values():
+            if (getattr(obj, key) == value):
+                return obj
+
+        return None
 
     def count(self, cls=None):
         """
