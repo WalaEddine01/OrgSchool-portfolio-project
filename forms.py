@@ -14,14 +14,15 @@ class regestrationForm(FlaskForm):
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Sign Up')
 
-    def validate_school_name(self, school_name):
-        admin = storage.get_by_key(Admin, "school_name", school_name)
-        if admin:
-            raise ValidationError('That school name is taken. Please choose a different one.')
+    if os.environ.get('HBNB_TYPE_STORAGE') != 'db':
+        def validate_school_name(self, school_name):
+            admin = storage.get_by_key(Admin, "school_name", school_name)
+            if admin:
+                raise ValidationError('That school name is taken. Please choose a different one.')
 
     if os.environ.get('HBNB_TYPE_STORAGE') != 'db':
         def validate_email(self, email):
-            admin = storage.get_by_key(Admin, "email", email.data)
+            admin = storage.get_by_key(Admin, "email", email)
             if admin:
                 raise ValidationError('That email is taken. Please choose a different one.')
 

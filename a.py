@@ -8,7 +8,7 @@ from models.admin import Admin
 import hashlib
 
 # User-entered password
-entered_password = "ww"
+entered_password = "wala"
 
 # Hash the user-entered password using MD5 (or any other hashing algorithm)
 hashed_entered_password = hashlib.md5("ww".encode()).hexdigest()

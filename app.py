@@ -42,7 +42,7 @@ def login():
     form = LoginForm()
     if form.validate_on_submit() :
         admin = storage.get_by_key(Admin, 'email', form.email.data)
-        if admin and admin.password == form.password.data:
+        if admin and admin.password == md5(form.password.data.encode()).hexdigest():
             login_user(admin, remember=form.remember.data)
             flash('You have been logged in!', 'success')
             return redirect(url_for('home'))

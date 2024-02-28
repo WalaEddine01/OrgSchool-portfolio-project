@@ -36,8 +36,8 @@ class Admin(BaseModel, UserMixin, Base):
 
     def __setattr__(self, name, value):
         """sets a password with md5 encryption"""
-        #if name == "password":
-        #   value = md5(value.encode()).hexdigest()
+        if name == "password":
+            value = md5(value.encode()).hexdigest()
         super().__setattr__(name, value)
     
     if models.storage_t != 'db':
