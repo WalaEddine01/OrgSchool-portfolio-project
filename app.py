@@ -3,7 +3,7 @@
 from flask import Flask, render_template, url_for, flash, redirect
 from forms import *
 import os
-from flask_login import LoginManager, login_user, current_user
+from flask_login import LoginManager, login_user, current_user, logout_user
 from hashlib import md5
 from models import storage
 
@@ -15,20 +15,21 @@ login_manager = LoginManager(app)
 def load_user(user_id):
     return storage.get(Admin, user_id)
 
+
 @app.route('/')
+@app.route("/about")
+def about():
+    return render_template('about.html')
 @app.route('/home')
 def home():
     return render_template('index.html')
 
-@app.route("/about")
-def about():
-    return render_template('about.html')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
         flash('You are already logged in!', 'info')
-        return redirect(url_for('home'))
+        return redirect(url_for('about'))
     form = regestrationForm()
     if form.validate_on_submit():
         flash(f'Account created for {form.school_name.data}!', 'success')
@@ -49,6 +50,11 @@ def login():
         else:
             flash('Login Unsuccessful. Please check email and password', 'danger')
     return render_template('login.html', title='Login', form=form)
+
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
 
 
 if __name__ == "__main__":

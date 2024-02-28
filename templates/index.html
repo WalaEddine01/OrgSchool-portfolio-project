@@ -1,15 +1,25 @@
 {% extends "layout.html" %}
 {% block content %}
-    {% for post in posts %}
-    <article class="media content-section">
-        <div class="media-body">
-          <div class="article-metadata">
-            <a class="mr-2" href="#">{{ post.author }}</a>
-            <small class="text-muted">{{ post.date_posted }}</small>
-          </div>
-          <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
-          <p class="article-content">{{ post.content }}</p>
-        </div>
-      </article>
-    {% endfor %}
+<nav class="wal">
+    <a href="#">Class 01</a>
+    <a href="#">Class 02</a>
+    <a href="#">Class 03</a>
+    <a href="#">Class 04</a>
+    <div class="animation start-home"></div>
+</nav>
+<br>
+<br>
+<article class="leaderboard">
+  <header>
+    <h1 class="leaderboard__title"><span class="leaderboard__title--top">Class 1</span><span class="leaderboard__title--bottom">Studens</span></h1>
+  </header>
+  <main class="leaderboard__profiles">
+    <article class="leaderboard__profile">
+      <span class="leaderboard__value2">2-</span>
+      <span class="leaderboard__name">Mark Zuckerberg</span>
+      <span class="leaderboard__value">20<span>yo</span></span>
+    </article>
+  </main>
+</div>
+</article>
 {% endblock content %}
