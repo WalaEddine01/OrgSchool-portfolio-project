@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """ holds class admin"""
-from time import sleep
 import models
 from models.base_model import BaseModel, Base
 from models.school import School
@@ -8,9 +7,10 @@ from models.sclass import SClass
 from sqlalchemy import Column, String, event
 from sqlalchemy.orm import relationship
 from hashlib import md5
+from flask_login import UserMixin
 
 
-class Admin(BaseModel, Base):
+class Admin(BaseModel, UserMixin, Base):
     """Representation of a admin """
     if models.storage_t == 'db':
         __tablename__ = 'admins'
@@ -36,8 +36,8 @@ class Admin(BaseModel, Base):
 
     def __setattr__(self, name, value):
         """sets a password with md5 encryption"""
-        if name == "password":
-            value = md5(value.encode()).hexdigest()
+        #if name == "password":
+        #   value = md5(value.encode()).hexdigest()
         super().__setattr__(name, value)
     
     if models.storage_t != 'db':
