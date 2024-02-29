@@ -13,6 +13,8 @@
     <header>
       <h1 class="leaderboard__title"><span class="leaderboard__title--top">Class 1</span><span class="leaderboard__title--bottom">Teachers</span></h1>
     </header>
+    <button>Add teacher</button>
+    <button style="--c:#E95A49">Delete teacher</button>
     <main class="leaderboard__profiles">
       {% if current_user.is_authenticated %}
       {% for teacher in teachers %}
@@ -35,6 +37,8 @@
   <header>
     <h1 class="leaderboard__title"><span class="leaderboard__title--top">Class 1</span><span class="leaderboard__title--bottom">Studens</span></h1>
   </header>
+  <button>add student</button>
+  <button style="--c:#E95A49">delete student</button>
   <main class="leaderboard__profiles">
     {% if current_user.is_authenticated %}
       {% for student in students %}

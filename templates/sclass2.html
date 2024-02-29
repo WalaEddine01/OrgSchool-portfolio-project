@@ -13,6 +13,8 @@
     <header>
       <h1 class="leaderboard__title"><span class="leaderboard__title--top">Class 2</span><span class="leaderboard__title--bottom">Teachers</span></h1>
     </header>
+    <button>Add teacher</button>
+      <button style="--c:#E95A49">Delete teacher</button>
     <main class="leaderboard__profiles">
       {% if current_user.is_authenticated %}
       {% for teacher in teachers %}
@@ -22,12 +24,12 @@
       </article>
       {% endfor %}
       {% else %}
-      <article class="leaderboard__profile">
+    <article class="leaderboard__profile">
       <span class="leaderboard__value2"></span>
       <span class="leaderboard__name">You are not logged in <br>Please login to see the students</span>
       <span class="leaderboard__value"></span>
-      </article>
-      {% endif %}
+    </article>
+    {% endif %}
     </main>
   </div>
   </article>
@@ -35,15 +37,17 @@
   <header>
     <h1 class="leaderboard__title"><span class="leaderboard__title--top">Class 2</span><span class="leaderboard__title--bottom">Studens</span></h1>
   </header>
+  <button>add student</button>
+  <button style="--c:#E95A49">delete student</button>
   <main class="leaderboard__profiles">
     {% if current_user.is_authenticated %}
-    {% for student in students %}
-    <article class="leaderboard__profile">
+      {% for student in students %}
+      <article class="leaderboard__profile">
       <span class="leaderboard__value2">{{ loop.index }}</span>
       <span class="leaderboard__name">{{ student.name }}</span>
       <span class="leaderboard__value">{{ student.age }}<span>yo</span></span>
-    </article>
-    {% endfor %}
+      </article>
+      {% endfor %}
     {% else %}
     <article class="leaderboard__profile">
       <span class="leaderboard__value2"></span>
