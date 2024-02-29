@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+{% block content %}
+<nav class="wal">
+    <a href="./sclass1">Class 01</a>
+    <a href="./sclass2">Class 02</a>
+    <a href="./sclass3">Class 03</a>
+    <a href="./sclass4">Class 04</a>
+    <div class="animation start-home"></div>
+</nav>
+<br>
+<br>
+<article class="leaderboard2">
+    <header>
+      <h1 class="leaderboard__title"><span class="leaderboard__title--top">Class 1</span><span class="leaderboard__title--bottom">Teachers</span></h1>
+    </header>
+    <main class="leaderboard__profiles">
+      {% if current_user.is_authenticated %}
+      {% for teacher in teachers %}
+      <article class="leaderboard__profile">
+        <span class="leaderboard__value2">{{ loop.index }}</span>
+        <span class="leaderboard__name">{{ teacher.name }}</span>
+      </article>
+      {% endfor %}
+      {% else %}
+    <article class="leaderboard__profile">
+      <span class="leaderboard__value2"></span>
+      <span class="leaderboard__name">You are not logged in <br>Please login to see the students</span>
+      <span class="leaderboard__value"></span>
+    </article>
+    {% endif %}
+    </main>
+  </div>
+  </article>
+<article class="leaderboard">
+  <header>
+    <h1 class="leaderboard__title"><span class="leaderboard__title--top">Class 1</span><span class="leaderboard__title--bottom">Studens</span></h1>
+  </header>
+  <main class="leaderboard__profiles">
+    {% if current_user.is_authenticated %}
+      {% for student in students %}
+      <article class="leaderboard__profile">
+      <span class="leaderboard__value2">{{ loop.index }}</span>
+      <span class="leaderboard__name">{{ student.name }}</span>
+      <span class="leaderboard__value">{{ student.age }}<span>yo</span></span>
+      </article>
+      {% endfor %}
+    {% else %}
+    <article class="leaderboard__profile">
+      <span class="leaderboard__value2"></span>
+      <span class="leaderboard__name">You are not logged in <br>Please login to see the students</span>
+      <span class="leaderboard__value"></span>
+    </article>
+    {% endif %}
+  </main>
+</div>
+</article>
+{% endblock content %}
