@@ -13,8 +13,44 @@
     <header>
       <h1 class="leaderboard__title"><span class="leaderboard__title--top">Class 1</span><span class="leaderboard__title--bottom">Teachers</span></h1>
     </header>
-    <button>Add teacher</button>
-    <button style="--c:#E95A49">Delete teacher</button>
+    <button class="adding">Add teacher
+      <div class="main">
+        <label class="menu-button-wrapper" for="">
+          <input type="checkbox" class="menu-button">
+          <div class="icon-wrapper">
+            <label class="hamburger">
+            </label>
+          </div>
+          <div class="item-list">
+            <div class="container2">
+              <form action="/sclass1" method="post" class="inputs">
+                <input type="text" name="name" placeholder="Name">
+                <input type="submit" value="Add teacher" class="sub">
+              </form>
+            </div>
+          </div>
+        </label>
+      </div>
+    </button>
+    <button style="--c:#E95A49" class="adding">Delete teacher
+      <div class="main">
+        <label class="menu-button-wrapper" for="">
+          <input type="checkbox" class="menu-button">
+          <div class="icon-wrapper">
+            <label class="hamburger">
+            </label>
+          </div>
+          <div class="item-list">
+            <div class="container3">
+              <form action="/sclass1" method="post" class="inputs">
+                <input type="text" name="name" placeholder="Name">
+                <input type="submit" value="Delete teacher" class="sub">
+              </form>
+            </div>
+          </div>
+        </label>
+      </div>
+    </button>
     <main class="leaderboard__profiles">
       {% if current_user.is_authenticated %}
       {% for teacher in teachers %}
@@ -37,8 +73,45 @@
   <header>
     <h1 class="leaderboard__title"><span class="leaderboard__title--top">Class 1</span><span class="leaderboard__title--bottom">Studens</span></h1>
   </header>
-  <button>add student</button>
-  <button style="--c:#E95A49">delete student</button>
+  <button class="adding">add student
+    <div class="main">
+      <label class="menu-button-wrapper" for="">
+        <input type="checkbox" class="menu-button">
+        <div class="icon-wrapper">
+          <label class="hamburger">
+          </label>
+        </div>
+        <div class="item-list">
+          <div class="container2">
+            <form action="/sclass1" method="post" class="inputs">
+              <input type="text" name="name" placeholder="Name">
+              <input type="text" name="age" placeholder="Age">
+              <input type="submit" value="Add student" class="sub">
+            </form>
+          </div>
+        </div>
+      </label>
+    </div>
+  </button>
+  <button style="--c:#E95A49" class="adding">delete student
+    <div class="main">
+      <label class="menu-button-wrapper" for="">
+        <input type="checkbox" class="menu-button">
+        <div class="icon-wrapper">
+          <label class="hamburger">
+          </label>
+        </div>
+        <div class="item-list">
+          <div class="container3">
+            <form action="/sclass1" method="post" class="inputs">
+              <input type="text" name="name" placeholder="Name">
+              <input type="submit" value="Delete student" class="sub">
+            </form>
+          </div>
+        </div>
+      </label>
+    </div>
+  </button>
   <main class="leaderboard__profiles">
     {% if current_user.is_authenticated %}
       {% for student in students %}
