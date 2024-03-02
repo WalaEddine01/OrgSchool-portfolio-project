@@ -75,17 +75,29 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
 document.addEventListener('DOMContentLoaded', function () {
     $('.sub5').click(function (event) {
         event.preventDefault();
-        console.log('About to get name value');
-        var name = document.querySelector('.name2').value;
-        console.log('Name value:', name);
-        
-
-        /*$.ajax({
+        var num = document.querySelector('.number').value;
+        var students = document.querySelectorAll('.student');
+        var sclass_id = document.querySelector('.sclass_id').value;
+        var s = [];
+        var student;
+        for (var i = 0; i < students.length; i++) {
+            if (num == i + 1){
+                student = students[i].value;
+            }
+        }
+        var student_id;
+        const parts = student.split("(");
+        const idWithParenthesis = parts[1].split(")");
+        const id2 = idWithParenthesis[0];
+        const id = id2.split(" ");
+        student_id = id;
+        $.ajax({
             type: 'DELETE',
-            url: `http://127.0.0.1:5000/api/v1/sclasses/${sclass_id}/students/${student_id}`,
-        });*/
-    });
-});
+            url: `http://127.0.0.1:5000/api/v1/sclasses/${sclass_id}/students/${id}`,
+        });
+    })
+})
