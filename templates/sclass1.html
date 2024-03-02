@@ -48,14 +48,17 @@
           <div class="item-list">
             <div class="container3">
               <form action="/sclass1" method="post" class="inputs">
-                <input type="text" name="name" placeholder="Name" class="name">
+                <input type="number" name="number" placeholder="Number" class="number">
                 {% if current_user.is_authenticated %}
                 <input type="hidden" name="sclass_id" value="{{ sclass_id }}" class="sclass_id">
+                {% for st in teachers %}
+                <input type="hidden" name="students" value="{{ st }}" class="student">
+                {% endfor %}
                 {% else %}
                 <input type="hidden" name="sclass_id" value="default_value" class="sclass_id">
                 {% endif %}
-                <input type="submit" value="delete teacher" class="sub3">
-              </form>
+                <input type="submit" value="Delete student" class="sub3">
+              </form> 
             </div>
           </div>
         </label>

@@ -40,24 +40,30 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-    /* $('.sub3').click(function (event) {
+    $('.sub3').click(function (event) {
         event.preventDefault();
-        var name = document.querySelector('.name').value;
+        var num = document.querySelector('.number').value;
+        var students = document.querySelectorAll('.student');
         var sclass_id = document.querySelector('.sclass_id').value;
-
-        if (!name || !sclass_id) {
-            alert('Please fill out all required fields.');
-            return;
+        var student;
+        for (var i = 0; i < students.length; i++) {
+            if (num == i + 1){
+                student = students[i].value;
+            }
         }
+        var student_id;
+        const parts = student.split("(");
+        const idWithParenthesis = parts[1].split(")");
+        const id2 = idWithParenthesis[0];
+        const id = id2.split(" ");
+        student_id = id;
         $.ajax({
-            type: 'POST',
-            url: `http://127.0.0.1:5000/api/v1/sclasses/${sclass_id}/teachers`,
-            contentType: 'application/json',
-            data: JSON.stringify({ name: name, sclass_id: sclass_id }),
+            type: 'DELETE',
+            url: `http://127.0.0.1:5000/api/v1/sclasses/${sclass_id}/teachers/${id}`,
         });
-    });
-    */
-});
+    })
+})
+
 
 document.addEventListener('DOMContentLoaded', function () {
     $('.sub4').click(function (event) {
