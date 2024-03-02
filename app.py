@@ -82,7 +82,7 @@ def sclass1():
         for teacher in teachers.values():
             if teacher.sclass_id == sclass1_id:
                 teachers_list.append(teacher)
-        return render_template('sclass1.html', title='sclass1', students=students_list, teachers=teachers_list)
+        return render_template('sclass1.html', title='sclass1', students=students_list, teachers=teachers_list, sclass_id=sclass1_id)
     return render_template('sclass1.html', title='sclass1')
 
 @app.route("/sclass2", methods=['GET', 'POST'])
