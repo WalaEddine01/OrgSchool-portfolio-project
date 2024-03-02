@@ -1,6 +1,6 @@
 .adding {
-  --c:  #13dc7e; /* the color*/
-  
+  --c:  #13dc7e;
+  display: inline-flex;
   box-shadow: 0 0 0 .1em inset var(--c); 
   --_g: linear-gradient(var(--c) 0 0) no-repeat;
   background: 
@@ -35,6 +35,43 @@
   background-color: rgb(0, 82, 82);
 }
 /**/
+.deleting {
+  --c:  #13dc7e;
+  display: inline-flex;
+  box-shadow: 0 0 0 .1em inset var(--c); 
+  --_g: linear-gradient(var(--c) 0 0) no-repeat;
+  background: 
+    var(--_g) calc(var(--_p,0%) - 100%) 0%,
+    var(--_g) calc(200% - var(--_p,0%)) 0%,
+    var(--_g) calc(var(--_p,0%) - 100%) 100%,
+    var(--_g) calc(200% - var(--_p,0%)) 100%;
+  background-size: 50.5% calc(var(--_p,0%)/2 + .5%);
+  outline-offset: .1em;
+  transition: background-size .4s, background-position 0s .4s;
+}
+.deleting:hover {
+  --_p: 100%;
+  transition: background-position .4s, background-size 0s;
+}
+.deleting:active {
+  box-shadow: 0 0 9e9q inset #0009; 
+  background-color: var(--c);
+  color: #fff;
+}
+
+.deleting {
+  font-family: system-ui, sans-serif;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #000000;
+  padding: .1em .6em;
+  font-weight: bold;  
+  border: none;
+  position: relative;
+  left: 25%;
+  background-color: rgb(0, 82, 82);
+}
+/**/
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -43,6 +80,9 @@
   position: relative;
   width: 30px;
   height: 30px;
+  margin-left: 10px;
+  margin-top: 2px;
+  margin-bottom: 0;
   display: inline-flex;
   flex-direction: column;
   justify-content: space-between;
@@ -50,14 +90,39 @@
   padding: 20px;
   
   &:before {
-    content: "";
+    content: "+";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     border-radius: 20px;
-    background: #024584;  /* fallback for old browsers */
+    background: #028457;  /* fallback for old browsers */
+  }
+}
+
+.deleting .hamburger {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+  margin-top: 2px;
+  margin-bottom: 0;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 20px;
+  
+  &:before {
+    content: "-";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 20px;
+    background: #831601;  /* fallback for old browsers */
   }
 }
 
@@ -107,9 +172,9 @@
 /**/
 .container2 {
   position: absolute;
-  transform: translate(-100%, -90%);
+  transform: translate(-100%, -70%);
   width: 250px;
-  height: 320px;
+  height: 200px;
   border-radius: 20px;
   box-sizing: border-box;
   background: #ecf0f3;
@@ -144,9 +209,20 @@
 /**/
 .container3 {
   position: absolute;
-  transform: translate(100%, -90%);
+  transform: translate(100%, -70%);
   width: 250px;
-  height: 320px;
+  height: 200px;
+  border-radius: 20px;
+  box-sizing: border-box;
+  background: #ecf0f3;
+  box-shadow: 14px 14px 20px #00253f, -14px -14px 20px #00253f;
+  font-family: poppins;
+}
+.deleting .container3 {
+  position: absolute;
+  transform: translate(50%, -70%);
+  width: 250px;
+  height: 200px;
   border-radius: 20px;
   box-sizing: border-box;
   background: #ecf0f3;
