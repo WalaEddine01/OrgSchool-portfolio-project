@@ -26,7 +26,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 document.addEventListener('DOMContentLoaded', function () {
     $('.sub2').click(function (event) {
-        event.preventDefault();
         var name = document.querySelector('.name').value;
         var sclass_id = document.querySelector('.sclass_id').value;
 
@@ -41,7 +40,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('DOMContentLoaded', function () {
     $('.sub3').click(function (event) {
-        event.preventDefault();
         var num = document.querySelector('.number').value;
         var teachers = document.querySelectorAll('.teacher');
         var sclass_id = document.querySelector('.sclass_id').value;
@@ -68,7 +66,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('DOMContentLoaded', function () {
     $('.sub4').click(function (event) {
-        event.preventDefault();
         var name = document.querySelector('.name2').value;
         var sclass_id = document.querySelector('.sclass_id').value;
         var age = document.querySelector('.age').value
@@ -85,7 +82,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('DOMContentLoaded', function () {
     $('.sub5').click(function (event) {
-        event.preventDefault();
         var num = document.querySelector('.number2').value;
         var students = document.querySelectorAll('.student');
         var sclass_id = document.querySelector('.sclass_id').value;
