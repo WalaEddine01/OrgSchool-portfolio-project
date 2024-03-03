@@ -18,6 +18,8 @@ class Admin(BaseModel, UserMixin, Base):
         password = Column(String(128), nullable=False)
         school_name = Column(String(128), nullable=False)
         schools = relationship("School", back_populates="admin")
+        students = relationship('Student', back_populates='admin')
+        teachers = relationship('Teacher', back_populates='admin')
 
     else:
         email = ""

@@ -52,13 +52,13 @@
                 <input type="number" name="number" placeholder="Number" class="number">
                 {% if current_user.is_authenticated %}
                 <input type="hidden" name="sclass_id" value="{{ sclass_id }}" class="sclass_id">
-                {% for st in teachers %}
-                <input type="hidden" name="students" value="{{ st }}" class="student">
+                {% for teacher in teachers %}
+                <input type="hidden" name="teachers" value="{{ teacher }}" class="teacher">
                 {% endfor %}
                 {% else %}
                 <input type="hidden" name="sclass_id" value="default_value" class="sclass_id">
                 {% endif %}
-                <input type="submit" value="Delete student" class="sub3">
+                <input type="submit" value="Delete teacher" class="sub3">
               </form> 
             </div>
           </div>
@@ -69,15 +69,17 @@
     <main class="leaderboard__profiles">
       {% if current_user.is_authenticated %}
       {% for teacher in teachers %}
+      {% if teacher.admin_id == admin_id %}
       <article class="leaderboard__profile">
         <span class="leaderboard__value2">{{ loop.index }}</span>
         <span class="leaderboard__name">{{ teacher.name }}</span>
       </article>
+      {% endif %}
       {% endfor %}
       {% else %}
     <article class="leaderboard__profile">
       <span class="leaderboard__value2"></span>
-      <span class="leaderboard__name">You are not logged in <br>Please login to see the students</span>
+      <span class="leaderboard__name">You are not logged in <br>Please login to see the teachers</span>
       <span class="leaderboard__value"></span>
     </article>
     {% endif %}
@@ -125,11 +127,11 @@
         <div class="item-list">
           <div class="container3">
             <form action="/sclass4" method="post" class="inputs">
-              <input type="number" name="number" placeholder="Number" class="number">
+              <input type="number" name="number" placeholder="Number" class="number2">
               {% if current_user.is_authenticated %}
               <input type="hidden" name="sclass_id" value="{{ sclass_id }}" class="sclass_id">
-              {% for st in students %}
-              <input type="hidden" name="students" value="{{ st }}" class="student">
+              {% for student in students %}
+              <input type="hidden" name="students" value="{{ student }}" class="student">
               {% endfor %}
               {% else %}
               <input type="hidden" name="sclass_id" value="default_value" class="sclass_id">
@@ -145,11 +147,13 @@
   <main class="leaderboard__profiles">
     {% if current_user.is_authenticated %}
       {% for student in students %}
+      {% if student.admin_id == admin_id %}
       <article class="leaderboard__profile">
       <span class="leaderboard__value2">{{ loop.index }}</span>
       <span class="leaderboard__name">{{ student.name }}</span>
       <span class="leaderboard__value">{{ student.age }}<span>yo</span></span>
       </article>
+      {% endif %}
       {% endfor %}
     {% else %}
     <article class="leaderboard__profile">

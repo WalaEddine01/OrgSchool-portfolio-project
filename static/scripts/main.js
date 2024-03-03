@@ -28,12 +28,13 @@ document.addEventListener('DOMContentLoaded', function () {
     $('.sub2').click(function (event) {
         var name = document.querySelector('.name').value;
         var sclass_id = document.querySelector('.sclass_id').value;
+        var admin_id = document.querySelector('.admin_id').value;
 
         $.ajax({
             type: 'POST',
             url: `http://127.0.0.1:5000/api/v1/sclasses/${sclass_id}/teachers`,
             contentType: 'application/json',
-            data: JSON.stringify({ name: name, sclass_id: sclass_id }),
+            data: JSON.stringify({ name: name, sclass_id: sclass_id, admin_id: admin_id}),
         });
     });
 });
@@ -69,13 +70,14 @@ document.addEventListener('DOMContentLoaded', function () {
         var name = document.querySelector('.name2').value;
         var sclass_id = document.querySelector('.sclass_id').value;
         var age = document.querySelector('.age').value
+        var admin_id = document.querySelector('.admin_id').value;
         console.log('Name value:', name);
 
         $.ajax({
             type: 'POST',
             url: `http://127.0.0.1:5000/api/v1/sclasses/${sclass_id}/students`,
             contentType: 'application/json',
-            data: JSON.stringify({ name: name, age: age}),
+            data: JSON.stringify({ name: name, age: age, sclass_id: sclass_id, admin_id: admin_id}),
         });
     });
 });

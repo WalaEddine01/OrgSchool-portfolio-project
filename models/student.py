@@ -15,6 +15,8 @@ class Student(BaseModel, Base):
         name = Column(String(128), nullable=False)
         age = Column(Integer, nullable=False)
         sclass_id = Column(String(60), ForeignKey('sclasses.id'), nullable=False)
+        admin_id = Column(String(60), ForeignKey('admins.id'), nullable=False)
+        admin = relationship('Admin', back_populates="students")
         sclass = relationship("SClass", back_populates="students")
     else:
         name = ""

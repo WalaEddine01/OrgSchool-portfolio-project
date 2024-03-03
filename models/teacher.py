@@ -14,6 +14,8 @@ class Teacher(BaseModel, Base):
         __tablename__ = 'teachers'
         name = Column(String(128), nullable=False)
         sclass_id = Column(String(60), ForeignKey('sclasses.id'), nullable=False)
+        admin_id = Column(String(60), ForeignKey('admins.id'), nullable=False)
+        admin = relationship('Admin', back_populates="teachers")
         sclass = relationship("SClass", back_populates="teachers")
 
 

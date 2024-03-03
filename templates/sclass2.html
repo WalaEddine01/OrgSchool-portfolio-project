@@ -69,15 +69,17 @@
     <main class="leaderboard__profiles">
       {% if current_user.is_authenticated %}
       {% for teacher in teachers %}
+      {% if teacher.admin_id == admin_id %}
       <article class="leaderboard__profile">
         <span class="leaderboard__value2">{{ loop.index }}</span>
         <span class="leaderboard__name">{{ teacher.name }}</span>
       </article>
+      {% endif %}
       {% endfor %}
       {% else %}
     <article class="leaderboard__profile">
       <span class="leaderboard__value2"></span>
-      <span class="leaderboard__name">You are not logged in <br>Please login to see the students</span>
+      <span class="leaderboard__name">You are not logged in <br>Please login to see the teachers</span>
       <span class="leaderboard__value"></span>
     </article>
     {% endif %}
@@ -145,11 +147,13 @@
   <main class="leaderboard__profiles">
     {% if current_user.is_authenticated %}
       {% for student in students %}
+      {% if student.admin_id == admin_id %}
       <article class="leaderboard__profile">
       <span class="leaderboard__value2">{{ loop.index }}</span>
       <span class="leaderboard__name">{{ student.name }}</span>
       <span class="leaderboard__value">{{ student.age }}<span>yo</span></span>
       </article>
+      {% endif %}
       {% endfor %}
     {% else %}
     <article class="leaderboard__profile">
