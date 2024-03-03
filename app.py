@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-
+"""
+This module contains the main Flask app
+"""
 from flask import Flask, render_template, url_for, flash, redirect
 from forms import *
 import os
@@ -16,14 +18,21 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(24)
 login_manager = LoginManager(app)
 
+
 @login_manager.user_loader
 def load_user(user_id):
+    """
+    This function returns the user object from the user_id
+    """
     return storage.get(Admin, user_id)
 
 
 @app.route('/')
 @app.route('/home')
 def home():
+    """
+    This function renders the home page
+    """
     if current_user.is_authenticated:
         admin_id = current_user.id
         school = storage.get_by_key(School, 'admin_id', admin_id)
@@ -32,11 +41,17 @@ def home():
 
 @app.route("/about")
 def about():
+    """
+    This function renders the about page
+    """
     return render_template('about.html')
 
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    """
+    This function renders the register page
+    """
     if current_user.is_authenticated:
         flash('You are already logged in!', 'info')
         return redirect(url_for('home'))
@@ -48,6 +63,9 @@ def register():
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
+    """
+    This function renders the login page
+    """
     if current_user.is_authenticated:
         flash('You are already logged in!', 'info')
         return redirect(url_for('home'))
@@ -64,11 +82,17 @@ def login():
 
 @app.route("/logout")
 def logout():
+    """
+    This function logs out the user
+    """
     logout_user()
     return redirect(url_for('home'))
 
 @app.route("/sclass1", methods=['GET', 'POST'])
 def sclass1():
+    """
+    This function renders the sclass1 page
+    """
     if current_user.is_authenticated:
         sclass1 = storage.get_by_key(SClass, 'name', 'SClass 1')
         sclass1_id = sclass1.id
@@ -87,6 +111,9 @@ def sclass1():
 
 @app.route("/sclass2", methods=['GET', 'POST'])
 def sclass2():
+    """
+    This function renders the sclass2 page
+    """
     if current_user.is_authenticated:
         sclass2 = storage.get_by_key(SClass, 'name', 'SClass 2')
         sclass2_id = sclass2.id
@@ -105,6 +132,9 @@ def sclass2():
 
 @app.route("/sclass3", methods=['GET', 'POST'])
 def sclass3():
+    """
+    This function renders the sclass3 page
+    """
     if current_user.is_authenticated:
         sclass3 = storage.get_by_key(SClass, 'name', 'SClass 3')
         sclass3_id = sclass3.id
@@ -123,6 +153,9 @@ def sclass3():
 
 @app.route("/sclass4", methods=['GET', 'POST'])
 def sclass4():
+    """
+    This function renders the sclass4 page
+    """
     if current_user.is_authenticated:
         sclass4 = storage.get_by_key(SClass, 'name', 'SClass 4')
         sclass4_id = sclass4.id

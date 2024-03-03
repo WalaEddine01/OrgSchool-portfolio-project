@@ -1,27 +1,23 @@
 #!/usr/bin/python3
 """
-Contains the TestDBStorageDocs and TestDBStorage classes
+Contains TestDBStorage classes
 """
 
 from datetime import datetime
 import inspect
 import models
 from models.engine import db_storage
-from models.amenity import Amenity
 from models.base_model import BaseModel
 from models.student import Student
-from models.class import Place
 from models.teacher import Teacher
-from models.class import Class
 from models.admin import Admin
 import json
 import os
-import pep8
+import pycodestyle
 import unittest
 from models import storage
 DBStorage = db_storage.DBStorage
-classes = {"Amenity": Amenity, "Student": Student, "Place": Place,
-           "Teacher": Teacher, "Class": Class, "Admin": Admin}
+classes = {"Student": Student, "Teacher": Teacher, "Admin": Admin, "BaseModel": BaseModel}
 
 
 class TestDBStorageDocs(unittest.TestCase):
@@ -31,17 +27,17 @@ class TestDBStorageDocs(unittest.TestCase):
         """Set up for the doc tests"""
         cls.dbs_f = inspect.getmembers(DBStorage, inspect.isfunction)
 
-    def test_pep8_conformance_db_storage(self):
-        """Test that models/engine/db_storage.py conforms to PEP8."""
-        pep8s = pep8.StyleGuide(quiet=True)
-        result = pep8s.check_files(['models/engine/db_storage.py'])
+    def test_pycodestyle_conformance_db_storage(self):
+        """Test that models/engine/db_storage.py conforms to pycodestyle."""
+        pycodestyles = pycodestyle.StyleGuide(quiet=True)
+        result = pycodestyles.check_files(['models/engine/db_storage.py'])
         self.assertEqual(result.total_errors, 0,
                          "Found code style errors (and warnings).")
 
-    def test_pep8_conformance_test_db_storage(self):
-        """Test tests/test_models/test_db_storage.py conforms to PEP8."""
-        pep8s = pep8.StyleGuide(quiet=True)
-        result = pep8s.check_files(['tests/test_models/test_engine/\
+    def test_pycodestyle_conformance_test_db_storage(self):
+        """Test tests/test_models/test_db_storage.py conforms to pycodestyle."""
+        pycodestyles = pycodestyle.StyleGuide(quiet=True)
+        result = pycodestyles.check_files(['tests/test_models/test_engine/\
 test_db_storage.py'])
         self.assertEqual(result.total_errors, 0,
                          "Found code style errors (and warnings).")
@@ -87,24 +83,3 @@ class TestFileStorage(unittest.TestCase):
     @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
     def test_save(self):
         """Test that save properly saves objects to file.json"""
-
-    def test_get_db(self):
-        """ Tests method for obtaining an instance db storage"""
-        dic = {"name": "Cundinamarca"}
-        instance = Class(**dic)
-        storage.new(instance)
-        storage.save()
-        get_instance = storage.get(Class, instance.id)
-        self.assertEqual(get_instance, instance)
-
-    def test_count(self):
-        """ Tests count method db storage """
-        dic = {"name": "Vecindad"}
-        class = Class(**dic)
-        storage.new(class)
-        dic = {"name": "Mexico", "class_id": class.id}
-        student = Student(**dic)
-        storage.new(student)
-        storage.save()
-        c = storage.count()
-        self.assertEqual(len(storage.all()), c)

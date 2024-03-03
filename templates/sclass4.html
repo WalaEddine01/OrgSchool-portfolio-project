@@ -13,6 +13,7 @@
     <header>
       <h1 class="leaderboard__title"><span class="leaderboard__title--top">Class 4</span><span class="leaderboard__title--bottom">Teachers</span></h1>
     </header>
+    {% if current_user.is_authenticated %}
     <button class="adding">Add teacher
       <div class="main">
         <label class="menu-button-wrapper" for="">
@@ -64,6 +65,7 @@
         </label>
       </div>
     </button>
+    {% endif %}
     <main class="leaderboard__profiles">
       {% if current_user.is_authenticated %}
       {% for teacher in teachers %}
@@ -86,6 +88,7 @@
   <header>
     <h1 class="leaderboard__title"><span class="leaderboard__title--top">Class 4</span><span class="leaderboard__title--bottom">Studens</span></h1>
   </header>
+  {% if current_user.is_authenticated %}
   <button class="adding">add student
     <div class="main">
       <label class="menu-button-wrapper" for="">
@@ -138,6 +141,7 @@
       </label>
     </div>
   </button>
+  {% endif %}
   <main class="leaderboard__profiles">
     {% if current_user.is_authenticated %}
       {% for student in students %}
