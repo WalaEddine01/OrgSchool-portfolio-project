@@ -13,8 +13,57 @@
     <header>
       <h1 class="leaderboard__title"><span class="leaderboard__title--top">Class 3</span><span class="leaderboard__title--bottom">Teachers</span></h1>
     </header>
-    <button>Add teacher</button>
-      <button style="--c:#E95A49">Delete teacher</button>
+    <button class="adding">Add teacher
+      <div class="main">
+        <label class="menu-button-wrapper" for="">
+          <input type="checkbox" class="menu-button">
+          <div class="icon-wrapper">
+            <label class="hamburger">
+            </label>
+          </div>
+          <div class="item-list">
+            <div class="container2">
+              <form action="/sclass3" method="post" class="inputs">
+                <input type="text" name="name" placeholder="Name" class="name">
+                {% if current_user.is_authenticated %}
+                <input type="hidden" name="sclass_id" value="{{ sclass_id }}" class="sclass_id">
+                {% else %}
+                <input type="hidden" name="sclass_id" value="default_value" class="sclass_id">
+                {% endif %}
+                <input type="submit" value="Add teacher" class="sub2">
+              </form>
+            </div>
+          </div>
+        </label>
+      </div>
+    </button>
+    <button style="--c:#E95A49" class="deleting">Delete teacher
+      <div class="main">
+        <label class="menu-button-wrapper" for="">
+          <input type="checkbox" class="menu-button">
+          <div class="icon-wrapper">
+            <label class="hamburger">
+            </label>
+          </div>
+          <div class="item-list">
+            <div class="container3">
+              <form action="/sclass3" method="post" class="inputs">
+                <input type="number" name="number" placeholder="Number" class="number">
+                {% if current_user.is_authenticated %}
+                <input type="hidden" name="sclass_id" value="{{ sclass_id }}" class="sclass_id">
+                {% for st in teachers %}
+                <input type="hidden" name="students" value="{{ st }}" class="student">
+                {% endfor %}
+                {% else %}
+                <input type="hidden" name="sclass_id" value="default_value" class="sclass_id">
+                {% endif %}
+                <input type="submit" value="Delete student" class="sub3">
+              </form> 
+            </div>
+          </div>
+        </label>
+      </div>
+    </button>
     <main class="leaderboard__profiles">
       {% if current_user.is_authenticated %}
       {% for teacher in teachers %}
@@ -37,8 +86,58 @@
   <header>
     <h1 class="leaderboard__title"><span class="leaderboard__title--top">Class 3</span><span class="leaderboard__title--bottom">Studens</span></h1>
   </header>
-  <button>add student</button>
-  <button style="--c:#E95A49">delete student</button>
+  <button class="adding">add student
+    <div class="main">
+      <label class="menu-button-wrapper" for="">
+        <input type="checkbox" class="menu-button">
+        <div class="icon-wrapper">
+          <label class="hamburger">
+          </label>
+        </div>
+        <div class="item-list">
+          <div class="container2">
+            <form action="/sclass3" method="post" class="inputs">
+              <input type="text" name="name" placeholder="Name" class="name2">
+              <input type="number" name="age" placeholder="Age" class="age">
+              {% if current_user.is_authenticated %}
+              <input type="hidden" name="sclass_id" value="{{ sclass_id }}" class="sclass_id">
+              {% else %}
+              <input type="hidden" name="sclass_id" value="default_value" class="sclass_id">
+              {% endif %}
+              <input type="submit" value="Add student" class="sub4">
+            </form>
+          </div>
+        </div>
+      </label>
+    </div>
+  </button>
+  <button style="--c:#E95A49" class="deleting">delete student
+    <div class="main">
+      <label class="menu-button-wrapper" for="">
+        <input type="checkbox" class="menu-button">
+        <div class="icon-wrapper">
+          <label class="hamburger">
+          </label>
+        </div>
+        <div class="item-list">
+          <div class="container3">
+            <form action="/sclass3" method="post" class="inputs">
+              <input type="number" name="number" placeholder="Number" class="number">
+              {% if current_user.is_authenticated %}
+              <input type="hidden" name="sclass_id" value="{{ sclass_id }}" class="sclass_id">
+              {% for st in students %}
+              <input type="hidden" name="students" value="{{ st }}" class="student">
+              {% endfor %}
+              {% else %}
+              <input type="hidden" name="sclass_id" value="default_value" class="sclass_id">
+              {% endif %}
+              <input type="submit" value="Delete student" class="sub5">
+            </form>
+          </div>
+        </div>
+      </label>
+    </div>
+  </button>
   <main class="leaderboard__profiles">
     {% if current_user.is_authenticated %}
       {% for student in students %}

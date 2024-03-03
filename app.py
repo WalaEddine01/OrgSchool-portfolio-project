@@ -100,7 +100,7 @@ def sclass2():
         for teacher in teachers.values():
             if teacher.sclass_id == sclass2_id:
                 teachers_list.append(teacher)
-        return render_template('sclass2.html', title='sclass2', students=students_list, teachers=teachers_list)
+        return render_template('sclass2.html', title='sclass2', students=students_list, teachers=teachers_list, sclass_id=sclass2_id)
     return render_template('sclass2.html', title='sclass2')
 
 @app.route("/sclass3", methods=['GET', 'POST'])
@@ -118,7 +118,7 @@ def sclass3():
         for teacher in teachers.values():
             if teacher.sclass_id == sclass3_id:
                 teachers_list.append(teacher)
-        return render_template('sclass3.html', title='sclass3', students=students_list, teachers=teachers_list)
+        return render_template('sclass3.html', title='sclass3', students=students_list, teachers=teachers_list, sclass_id=sclass3_id)
     return render_template('sclass3.html', title='sclass3')
 
 @app.route("/sclass4", methods=['GET', 'POST'])
@@ -136,7 +136,7 @@ def sclass4():
         for teacher in teachers.values():
             if teacher.sclass_id == sclass4_id:
                 teachers_list.append(teacher)
-        return render_template('sclass4.html', title='sclass4', students=students_list, teachers=teachers_list)
+        return render_template('sclass4.html', title='sclass4', students=students_list, teachers=teachers_list, sclass_id=sclass4_id)
     return render_template('sclass4.html', title='sclass4')
 
 if __name__ == "__main__":
