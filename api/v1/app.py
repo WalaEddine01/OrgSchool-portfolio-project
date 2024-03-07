@@ -14,7 +14,7 @@ app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 app.register_blueprint(app_views)
 CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 app.config['SWAGGER'] = {
-    'title': 'AirBnB clone Restful API',
+    'title': 'Org School Restful API',
     'uiversion': 3
 }
 
