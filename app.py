@@ -28,6 +28,14 @@ def load_user(user_id):
 
 
 @app.route('/')
+@app.route("/about")
+def about():
+    """
+    This function renders the about page
+    """
+    return render_template('about.html')
+
+
 @app.route('/home')
 def home():
     """
@@ -38,13 +46,6 @@ def home():
         school = storage.get_by_key(School, 'admin_id', admin_id)
         return render_template('index.html', title='Home', name=school.name)
     return render_template('index.html', title='Home')
-
-@app.route("/about")
-def about():
-    """
-    This function renders the about page
-    """
-    return render_template('about.html')
 
 
 @app.route('/register', methods=['GET', 'POST'])
