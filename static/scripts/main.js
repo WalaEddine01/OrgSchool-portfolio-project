@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 document.addEventListener('DOMContentLoaded', function () {
-    $('.sub2').click(function (event) {
+    $('.sub2').click(function () {
         var name = document.querySelector('.name').value;
         var sclass_id = document.querySelector('.sclass_id').value;
         var admin_id = document.querySelector('.admin_id').value;
@@ -35,12 +35,31 @@ document.addEventListener('DOMContentLoaded', function () {
             url: `http://127.0.0.1:5000/api/v1/sclasses/${sclass_id}/teachers`,
             contentType: 'application/json',
             data: JSON.stringify({ name: name, sclass_id: sclass_id, admin_id: admin_id}),
+            success: function() {
+                // Initialize reload count if not already set
+                if (localStorage.getItem('reloadCount') === null) {
+                    localStorage.setItem('reloadCount', '0');
+                }
+
+                // Increment the reload count
+                var reloadCount = Number(localStorage.getItem('reloadCount'));
+                reloadCount++;
+                localStorage.setItem('reloadCount', reloadCount.toString());
+
+                // Reload the page if reload count is less than 2
+                if (reloadCount < 2) {
+                    window.location.reload();
+                } else {
+                    // Reset the reload count after the second reload
+                    localStorage.setItem('reloadCount', '0');
+                }
+            }
         });
     });
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-    $('.sub3').click(function (event) {
+    $('.sub3').click(function () {
         var num = document.querySelector('.number').value;
         var teachers = document.querySelectorAll('.teacher');
         var sclass_id = document.querySelector('.sclass_id').value;
@@ -60,30 +79,68 @@ document.addEventListener('DOMContentLoaded', function () {
         $.ajax({
             type: 'DELETE',
             url: `http://127.0.0.1:5000/api/v1/sclasses/${sclass_id}/teachers/${teacher_id}`,
+            success: function() {
+                // Initialize reload count if not already set
+                if (localStorage.getItem('reloadCount') === null) {
+                    localStorage.setItem('reloadCount', '0');
+                }
+
+                // Increment the reload count
+                var reloadCount = Number(localStorage.getItem('reloadCount'));
+                reloadCount++;
+                localStorage.setItem('reloadCount', reloadCount.toString());
+
+                // Reload the page if reload count is less than 2
+                if (reloadCount < 2) {
+                    window.location.reload();
+                } else {
+                    // Reset the reload count after the second reload
+                    localStorage.setItem('reloadCount', '0');
+                }
+            }
         });
     })
 })
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    $('.sub4').click(function (event) {
+    $('.sub4').click(function () {
         var name = document.querySelector('.name2').value;
         var sclass_id = document.querySelector('.sclass_id').value;
-        var age = document.querySelector('.age').value
+        var age = document.querySelector('.age').value;
         var admin_id = document.querySelector('.admin_id').value;
-        console.log('Name value:', name);
-
+        
         $.ajax({
             type: 'POST',
             url: `http://127.0.0.1:5000/api/v1/sclasses/${sclass_id}/students`,
             contentType: 'application/json',
             data: JSON.stringify({ name: name, age: age, sclass_id: sclass_id, admin_id: admin_id}),
+            success: function() {
+                // Initialize reload count if not already set
+                if (localStorage.getItem('reloadCount') === null) {
+                    localStorage.setItem('reloadCount', '0');
+                }
+
+                // Increment the reload count
+                var reloadCount = Number(localStorage.getItem('reloadCount'));
+                reloadCount++;
+                localStorage.setItem('reloadCount', reloadCount.toString());
+
+                // Reload the page if reload count is less than 2
+                if (reloadCount < 2) {
+                    window.location.reload();
+                } else {
+                    // Reset the reload count after the second reload
+                    localStorage.setItem('reloadCount', '0');
+                }
+            }
         });
+        console.log('Student added');
     });
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-    $('.sub5').click(function (event) {
+    $('.sub5').click(function () {
         var num = document.querySelector('.number2').value;
         var students = document.querySelectorAll('.student');
         var sclass_id = document.querySelector('.sclass_id').value;
@@ -111,6 +168,23 @@ document.addEventListener('DOMContentLoaded', function () {
         $.ajax({
             type: 'DELETE',
             url: `http://127.0.0.1:5000/api/v1/sclasses/${sclass_id}/students/${student_id}`,
+            success: function() {
+                // Extract the current reload count from the URL
+                var urlParams = new URLSearchParams(window.location.search);
+                var reloadCount = urlParams.get('reloadCount') ? Number(urlParams.get('reloadCount')) : 0;
+
+                // Increment the reload count
+                reloadCount++;
+
+                // Update the URL with the new reload count
+                urlParams.set('reloadCount', reloadCount);
+                window.history.replaceState({}, '', '?' + urlParams.toString());
+
+                // Reload the page if reload count is less than 2
+                if (reloadCount < 2) {
+                    window.location.reload();
+                }
+            }
         });
     })
 })
