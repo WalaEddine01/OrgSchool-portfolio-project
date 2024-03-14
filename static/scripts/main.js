@@ -30,12 +30,18 @@ document.addEventListener('DOMContentLoaded', function () {
         var sclass_id = document.querySelector('.sclass_id').value;
         var admin_id = document.querySelector('.admin_id').value;
 
+        if (!name) {
+            alert('Please fill out all required fields.');
+            return;
+        }
+        else {
         $.ajax({
             type: 'POST',
             url: `http://127.0.0.1:5000/api/v1/sclasses/${sclass_id}/teachers`,
             contentType: 'application/json',
             data: JSON.stringify({ name: name, sclass_id: sclass_id, admin_id: admin_id}),
         });
+    }
     });
 });
 
@@ -45,6 +51,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var teachers = document.querySelectorAll('.teacher');
         var sclass_id = document.querySelector('.sclass_id').value;
         var teacher;
+        if (!num) {
+            alert('Please fill out all required fields.');
+            return;
+        }
         for (var i = 0; i < teachers.length; i++) {
             if (num == i + 1){
                 teacher = teachers[i].value;
@@ -71,7 +81,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var sclass_id = document.querySelector('.sclass_id').value;
         var age = document.querySelector('.age').value;
         var admin_id = document.querySelector('.admin_id').value;
-        
+        if (!name || !age) {
+            alert('Please fill out all required fields.');
+            return;
+        }
         $.ajax({
             type: 'POST',
             url: `http://127.0.0.1:5000/api/v1/sclasses/${sclass_id}/students`,
@@ -88,6 +101,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var students = document.querySelectorAll('.student');
         var sclass_id = document.querySelector('.sclass_id').value;
         var student;
+        if (!num) {
+            alert('Please fill out all required fields.');
+            return;
+        }
         for (var i = 0; i < students.length; i++) {
             if (num == i + 1){
                 student = students[i].value;
