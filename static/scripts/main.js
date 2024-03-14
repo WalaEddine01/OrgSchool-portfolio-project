@@ -35,25 +35,6 @@ document.addEventListener('DOMContentLoaded', function () {
             url: `http://127.0.0.1:5000/api/v1/sclasses/${sclass_id}/teachers`,
             contentType: 'application/json',
             data: JSON.stringify({ name: name, sclass_id: sclass_id, admin_id: admin_id}),
-            success: function() {
-                // Initialize reload count if not already set
-                if (localStorage.getItem('reloadCount') === null) {
-                    localStorage.setItem('reloadCount', '0');
-                }
-
-                // Increment the reload count
-                var reloadCount = Number(localStorage.getItem('reloadCount'));
-                reloadCount++;
-                localStorage.setItem('reloadCount', reloadCount.toString());
-
-                // Reload the page if reload count is less than 2
-                if (reloadCount < 2) {
-                    window.location.reload();
-                } else {
-                    // Reset the reload count after the second reload
-                    localStorage.setItem('reloadCount', '0');
-                }
-            }
         });
     });
 });
@@ -79,25 +60,6 @@ document.addEventListener('DOMContentLoaded', function () {
         $.ajax({
             type: 'DELETE',
             url: `http://127.0.0.1:5000/api/v1/sclasses/${sclass_id}/teachers/${teacher_id}`,
-            success: function() {
-                // Initialize reload count if not already set
-                if (localStorage.getItem('reloadCount') === null) {
-                    localStorage.setItem('reloadCount', '0');
-                }
-
-                // Increment the reload count
-                var reloadCount = Number(localStorage.getItem('reloadCount'));
-                reloadCount++;
-                localStorage.setItem('reloadCount', reloadCount.toString());
-
-                // Reload the page if reload count is less than 2
-                if (reloadCount < 2) {
-                    window.location.reload();
-                } else {
-                    // Reset the reload count after the second reload
-                    localStorage.setItem('reloadCount', '0');
-                }
-            }
         });
     })
 })
@@ -115,25 +77,6 @@ document.addEventListener('DOMContentLoaded', function () {
             url: `http://127.0.0.1:5000/api/v1/sclasses/${sclass_id}/students`,
             contentType: 'application/json',
             data: JSON.stringify({ name: name, age: age, sclass_id: sclass_id, admin_id: admin_id}),
-            success: function() {
-                // Initialize reload count if not already set
-                if (localStorage.getItem('reloadCount') === null) {
-                    localStorage.setItem('reloadCount', '0');
-                }
-
-                // Increment the reload count
-                var reloadCount = Number(localStorage.getItem('reloadCount'));
-                reloadCount++;
-                localStorage.setItem('reloadCount', reloadCount.toString());
-
-                // Reload the page if reload count is less than 2
-                if (reloadCount < 2) {
-                    window.location.reload();
-                } else {
-                    // Reset the reload count after the second reload
-                    localStorage.setItem('reloadCount', '0');
-                }
-            }
         });
         console.log('Student added');
     });
@@ -167,24 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('Student ID:', student_id);
         $.ajax({
             type: 'DELETE',
-            url: `http://127.0.0.1:5000/api/v1/sclasses/${sclass_id}/students/${student_id}`,
-            success: function() {
-                // Extract the current reload count from the URL
-                var urlParams = new URLSearchParams(window.location.search);
-                var reloadCount = urlParams.get('reloadCount') ? Number(urlParams.get('reloadCount')) : 0;
-
-                // Increment the reload count
-                reloadCount++;
-
-                // Update the URL with the new reload count
-                urlParams.set('reloadCount', reloadCount);
-                window.history.replaceState({}, '', '?' + urlParams.toString());
-
-                // Reload the page if reload count is less than 2
-                if (reloadCount < 2) {
-                    window.location.reload();
-                }
-            }
+            url: `http://127.0.0.1:5000/api/v1/sclasses/${sclass_id}/students/${student_id}`
         });
     })
 })

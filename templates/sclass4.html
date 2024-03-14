@@ -11,7 +11,7 @@
 <br>
 <article class="leaderboard2">
     <header>
-      <h1 class="leaderboard__title"><span class="leaderboard__title--top">Class 1</span><span class="leaderboard__title--bottom">Teachers</span></h1>
+      <h1 class="leaderboard__title"><span class="leaderboard__title--top">Class 4</span><span class="leaderboard__title--bottom">Teachers</span></h1>
     </header>
     {% if current_user.is_authenticated %}
     <button class="adding">Add teacher
@@ -24,7 +24,7 @@
           </div>
           <div class="item-list">
             <div class="container2">
-              <form action="/sclass1" method="post" class="inputs">
+              <form action="/sclass4" method="post" class="inputs">
                 <input type="text" name="name" placeholder="Name" class="name">
                 {% if current_user.is_authenticated %}
                 <input type="hidden" name="sclass_id" value="{{ sclass_id }}" class="sclass_id">
@@ -48,7 +48,7 @@
           </div>
           <div class="item-list">
             <div class="container3">
-              <form action="/sclass1" method="post" class="inputs">
+              <form action="/sclass4" method="post" class="inputs">
                 <input type="number" name="number" placeholder="Number" class="number">
                 {% if current_user.is_authenticated %}
                 <input type="hidden" name="sclass_id" value="{{ sclass_id }}" class="sclass_id">
@@ -88,7 +88,7 @@
   </article>
 <article class="leaderboard">
   <header>
-    <h1 class="leaderboard__title"><span class="leaderboard__title--top">Class 1</span><span class="leaderboard__title--bottom">Studens</span></h1>
+    <h1 class="leaderboard__title"><span class="leaderboard__title--top">Class 4</span><span class="leaderboard__title--bottom">Studens</span></h1>
   </header>
   {% if current_user.is_authenticated %}
   <button class="adding">add student
@@ -101,7 +101,7 @@
         </div>
         <div class="item-list">
           <div class="container2">
-            <form action="/sclass1" method="post" class="inputs">
+            <form action="/sclass4" method="post" class="inputs">
               <input type="text" name="name" placeholder="Name" class="name2">
               <input type="number" name="age" placeholder="Age" class="age">
               {% if current_user.is_authenticated %}
@@ -127,7 +127,7 @@
         </div>
         <div class="item-list">
           <div class="container3">
-            <form action="/sclass1" method="post" class="inputs">
+            <form action="/sclass4" method="post" class="inputs">
               <input type="number" name="number" placeholder="Number" class="number2">
               {% if current_user.is_authenticated %}
               <input type="hidden" name="sclass_id" value="{{ sclass_id }}" class="sclass_id">
