@@ -10,6 +10,7 @@
   Organize, Simplify, Prosper
   <br />
   A Student Management System (SMS) is a software solution that facilitates the seamless organization<br /> and administration of student enrollment processes.
+  <br />
   <a href="http://walaeddine.tech">OrgSchool</a>
   ·
   <a href="https://github.com/WalaEddine01">GitHub</a>
@@ -24,9 +25,7 @@
 <div align="center">
 <br />
 
-[![license](https://img.shields.io/github/license/dec0dOS/amazing-github-template.svg?style=flat-square)](LICENSE)
-
-[![version](https://img.shields.io/badge/version-%201.0-green)
+[![license](https://img.shields.io/github/license/dec0dOS/amazing-github-template.svg?style=flat-square)](LICENSE)[![version](https://img.shields.io/badge/version-%201.0-green)
 
 </div>
 
