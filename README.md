@@ -4,9 +4,10 @@
   </a>
 </h1>
 <div align="center">
-  #OrgSchool
+  # OrgSchool
   <br />
   ###Organize, Simplify, Prosper
+  <br />
   [![license](https://img.shields.io/github/license/dec0dOS/amazing-github-template.svg?style=flat-square)](LICENSE)![version](https://img.shields.io/badge/version-%201.0-green)
   ####
   <a href="http://walaeddine.tech">OrgSchool</a>
