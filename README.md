@@ -4,12 +4,10 @@
   </a>
 </h1>
 <div align="center">
-  # OrgSchool
+  OrgSchool
   <br />
-  ###Organize, Simplify, Prosper
+  Organize, Simplify, Prosper
   <br />
-  [![license](https://img.shields.io/github/license/dec0dOS/amazing-github-template.svg?style=flat-square)](LICENSE)![version](https://img.shields.io/badge/version-%201.0-green)
-  ####
   <a href="http://walaeddine.tech">OrgSchool</a>
   ·
   <a href="https://github.com/WalaEddine01">GitHub</a>
@@ -20,6 +18,7 @@
   .
   <a href="https://member.theroom.com/profile/20d512f7-87c3-4b93-8276-f1294a80704e">professional resume</a>
 </div>
+[![license](https://img.shields.io/github/license/dec0dOS/amazing-github-template.svg?style=flat-square)](LICENSE)![version](https://img.shields.io/badge/version-%201.0-green)
 <div align="left">
   A Student Management System (SMS) is a software solution that facilitates the seamless organization<br /> and administration of student enrollment processes.
   <br />
