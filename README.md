@@ -3,13 +3,13 @@
     <img src="" alt="Logo" width="125" height="125">
   </a>
 </h1>
-
 <div align="center">
   OrgSchool
   <br />
   Organize, Simplify, Prosper
-  <br />
-  A Student Management System (SMS) is a software solution that facilitates the seamless organization<br /> and administration of student enrollment processes.
+  
+  ###
+  
   <br />
   <a href="http://walaeddine.tech">OrgSchool</a>
   ·
@@ -23,9 +23,12 @@
 </div>
 
 <div align="center">
-<br />
+<div align="left">
+  A Student Management System (SMS) is a software solution that facilitates the seamless organization<br /> and administration of student enrollment processes.
+  <br />
+</div>
 
-[![license](https://img.shields.io/github/license/dec0dOS/amazing-github-template.svg?style=flat-square)](LICENSE)[![version](https://img.shields.io/badge/version-%201.0-green)
+[![license](https://img.shields.io/github/license/dec0dOS/amazing-github-template.svg?style=flat-square)](LICENSE)![version](https://img.shields.io/badge/version-%201.0-green)
 
 </div>
 
