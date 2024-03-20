@@ -17,6 +17,8 @@
   <a href="https://member.theroom.com/profile/20d512f7-87c3-4b93-8276-f1294a80704e">professional resume</a>
   .
   <a href="https://www.youtube.com/watch?v=b3nwWVMvPlk">Youtube video</a>
+  .
+  <a href="https://medium.com/@walaaeddine33/building-a-fully-functional-web-application-from-scratch-orgschool-4b4cdaaada2f">Article</a>
 </div>
 <div align="center">
   
@@ -53,15 +55,20 @@
 <td>
 
 
-Key features of **Amazing GitHub Template**:
+Key features of **OrgSchool**:
 
-- f
+- **Add and remove Functionality.**
+- **Secure Information Using Hashing.**
+- **User Authentication and Authorization.**
+- **Data Validation.**
+- **User-Friendly UI.**
 
 <details open>
 <summary>Additional info</summary>
 <br>
 
-
+*****Story behind the idea:*****
+idea of the project was inspired by similar Ministry of National Education web app called <a href="https://ostad.education.gov.dz/">**ostad.education**</a>, this web app used by teachers in Algeria to manage students.
 </details>
 
 </td>
@@ -70,21 +77,37 @@ Key features of **Amazing GitHub Template**:
 
 ### Built With
 
-- [
+- ***Backend:*** *Python, MySQL.*
+- ***Frontend:*** *HTML, CSS, JavaScript.*
+- ***Frameworks:*** *Bootstrap, jQuery and Python Flask.*
 
+### I used Layered Architecture:
+
+***Presentation Layer (UI)***
+***Application Layer (Server-side Logic/API)***
+***Data Access Layer (Storage using MySQL)***
+![Admin (2)](https://github.com/WalaEddine01/OrgSchool-portfolio-project/assets/135642375/f45db5fa-8765-4b83-9a82-018985d73596)
 ## Getting Started
-
+You can Start use our service with two methods:
+1- create an accout in our platform <a href="http://walaeddine.tech">OrgSchool</a> and start your work.
+####
+2- Use it locally by following these steps:
+**Clone the repository**
 ```sh
-pip install --user cookiecutter
+git clone https://github.com/WalaEddine01/OrgSchool-portfolio-project.git
 ```
+**inside the directory run these commands**
+***setup your database***
 ```sh
-pip install --user cookiecutter
+cat setup/setup_mysql_dev.sql | sudo mysql
 ```
+***front-end route***
 ```sh
-pip install --user cookiecutter
+python3 app.py
 ```
+***api route***
 ```sh
-pip install --user cookiecutter
+python3 -m api.v1.app
 ```
 
 ### Usage
