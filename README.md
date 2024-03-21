@@ -87,6 +87,9 @@ idea of the project was inspired by similar Ministry of National Education web a
 ***Application Layer (Server-side Logic/API)***
 ***Data Access Layer (Storage using MySQL)***
 ![Admin (2)](https://github.com/WalaEddine01/OrgSchool-portfolio-project/assets/135642375/f45db5fa-8765-4b83-9a82-018985d73596)
+
+<img src="static/imgs/1.gif"></img>
+
 ## Getting Started
 You can Start use our service with two methods:
 1- create an accout in our platform <a href="http://walaeddine.tech">OrgSchool</a> and start your work.
