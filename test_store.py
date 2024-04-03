@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" console """
+""" Storing Objs using CLI """
 import cmd
 import models
 from models.base_model import BaseModel
