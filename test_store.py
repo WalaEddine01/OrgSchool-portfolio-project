@@ -8,7 +8,7 @@ from models.school import School
 from models.teacher import Teacher
 from models.sclass import SClass
 from models.admin import Admin
-import shlex  # for splitting the line along spaces except in double quotes
+import shlex  # for splitting the line along spaces except in double quotes.
 
 classes = {"BaseModel": BaseModel, "Student": Student,
            "School": School, "Teacher": Teacher, "SClass": SClass, "Admin": Admin}
